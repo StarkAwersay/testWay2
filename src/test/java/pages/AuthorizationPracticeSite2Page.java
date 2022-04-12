@@ -4,11 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import waits.Waiting;
 
 import static contsants.Constants.*;
+import static org.openqa.selenium.support.PageFactory.initElements;
 
-public class AuthorizationPracticeSite2Page extends PageFactory {
+public class AuthorizationPracticeSite2Page {
     private WebDriver driver;
     @FindBy(xpath = "//*[@id=\"username\"]")
     private WebElement usernameField;
@@ -20,23 +22,23 @@ public class AuthorizationPracticeSite2Page extends PageFactory {
     private WebElement logInButton;
     @FindBy(xpath = "//div[contains(@class,'ng-scope')]/p[contains(@class,'ng-scope')]")
     public WebElement textLogIn;
-    @FindBy(xpath = "//a[contains(@href,'#/login')]")
+    @FindBy(linkText= "Logout")
     public WebElement LogOutButton;
 
 
     public AuthorizationPracticeSite2Page(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        initElements(driver, this);
     }
 
     public void authorizationPracticeSite2() {
-        Waiting.waitingElementsDisplay(usernameField, driver).sendKeys(USERNAMEFORPRACTICESITE);
-        passwordField.sendKeys(PASSWORDFORPRACTICESITE);
-        descriptionUsernameField.sendKeys(USERNAMEDESCRIPTIONFORPRACTICESITE);
+        Waiting.waitingElementsDisplay(usernameField, driver).sendKeys(USERNAME_FOR_PRACTICE_SITE);
+        passwordField.sendKeys(PASSWORD_FOR_PRACTICE_SITE);
+        descriptionUsernameField.sendKeys(USERNAME_DESCRIPTION_FOR_PRACTICE_SITE);
         logInButton.click();
-        Waiting.waitingElementsDisplay(textLogIn, driver).isDisplayed();
-
-
+    }
+    public void textLoginShouldBeVisible(){
+        Assert.assertTrue(Waiting.waitingElementsDisplay(textLogIn,driver).isDisplayed());
     }
 
 }

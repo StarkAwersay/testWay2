@@ -4,11 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import waits.Waiting;
 
+import static org.openqa.selenium.support.PageFactory.initElements;
 
-public class MainPage extends PageFactory {
+
+public class MainPage{
     private WebDriver driver;
     @FindBy(xpath = "//div[contains(@class,'ast-above-header-bar')]")
     private WebElement contactDetailsBanner;
@@ -31,36 +33,39 @@ public class MainPage extends PageFactory {
     @FindBy(xpath = "//div[contains(@data-id,'50')]/div[contains(@class,'swiper-container')]")
     public WebElement coursePanel;
     @FindBy(xpath = "//div[contains(@class,'swiper-wrapper elementor-slides')]/div[contains(@class,'swiper-slide-active')]")
-    public WebElement blockSlider;
+    public WebElement activeBlockSwiper;
     public MainPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        initElements(driver, this);
     }
 
-    public void checkingElements() throws InterruptedException {
-        contactDetailsBanner.isDisplayed();
-        horizontalMenu.isDisplayed();
-        certificationPanel.isDisplayed();
+    public void advertisingBannerShouldBeVisible(){
         resourcesButton.click();
-        Waiting.waitingElementsDisplay(advertisingBanner, driver).isDisplayed();
+        Assert.assertTrue(Waiting.waitingElementsDisplay(advertisingBanner, driver).isDisplayed());
         closeButton.click();
+    }
+    public void contactDetailsBannerShouldBeVisible(){
+        Assert.assertTrue(Waiting.waitingElementsDisplay(contactDetailsBanner,driver).isDisplayed());
+    }
+    public void horizontalMenuShouldBeVisible(){
+        Assert.assertTrue(Waiting.waitingElementsDisplay(horizontalMenu,driver).isDisplayed());
+    }
+    public void certificationPanelShouldBeVisible(){
+        Assert.assertTrue(Waiting.waitingElementsDisplay(certificationPanel,driver).isDisplayed());
+    }
+    public void BlockSliderShouldBeVisible(){
+        Assert.assertTrue(Waiting.waitingElementsDisplay(activeBlockSwiper,driver).isDisplayed());
     }
     public void blockSliderSwipe(){
         Actions move = new Actions(driver);
-        move.dragAndDropBy(blockSlider,-500,0).perform();
+        move.dragAndDropBy(activeBlockSwiper,-500,0).perform();
     }
 
-    public void sliderButtonClick() throws InterruptedException {
+    public void sliderButtonClick(){
         sliderButton.click();
-        Thread.sleep(2000);
-        horizontalMenu.isDisplayed();
     }
-
-
 
     public void careersButtonClick() {
         careersButton.click();
     }
-
-
 }

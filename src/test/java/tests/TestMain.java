@@ -11,8 +11,6 @@ import org.testng.asserts.SoftAssert;
 import pages.*;
 
 
-import java.io.IOException;
-
 import static contsants.Constants.*;
 
 public class TestMain {
@@ -38,50 +36,55 @@ public class TestMain {
     @Test(priority = 1)
     public void mainPageTest() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
-        driver.get(MAINPAGE);
-        mainPage.checkingElements();
-        Thread.sleep(2000);
-        String oldBlockSliderText = mainPage.blockSlider.getText();
+        driver.get(MAIN_PAGE);
+        mainPage.contactDetailsBannerShouldBeVisible();
+        mainPage.horizontalMenuShouldBeVisible();
+        mainPage.certificationPanelShouldBeVisible();
+        mainPage.advertisingBannerShouldBeVisible();
+        mainPage.BlockSliderShouldBeVisible();
+        String oldBlockSliderText = mainPage.activeBlockSwiper.getText();
         mainPage.blockSliderSwipe();
-        String newBlockSliderText = mainPage.blockSlider.getText();
+        String newBlockSliderText = mainPage.activeBlockSwiper.getText();
         softAssert.assertEquals(oldBlockSliderText,newBlockSliderText,"Свайп корректен");
         mainPage.sliderButtonClick();
+        mainPage.horizontalMenuShouldBeVisible();
+        Thread.sleep(300);
         String newCoursePanel = mainPage.coursePanel.getText();
-        Assert.assertEquals(newCoursePanel, "Appium Mobile Automation Testing for Android and IOS\n" +
+        System.out.println(newCoursePanel);
+        Assert.assertEquals(newCoursePanel, "Cypress - Learn In-depth implementation on live projects\n" +
+                "Get Started\n" +
+                "Appium Mobile Automation Testing for Android and IOS\n" +
                 "Get Started\n" +
                 "Automation Architect Selenium with 7 live projects\n" +
-                "Get Started\n" +
-                "Protractor End to End testing for Angular JS App\n" +
                 "Get Started");
     }
 
     @Test(priority = 2)
-    public void registrationTest() throws InterruptedException {
-        driver.get(REGISTRATIONPAGE);
+    public void registrationTest(){
+        driver.get(REGISTRATION_PAGE);
         registrationPage.registration();
-        Thread.sleep(500);
-        seleniumTutorialPage.checkProfileMenuIsDisplayed();
+        seleniumTutorialPage.profileMenuShouldBeDisplayed();
     }
     @Test(priority = 3)
-    public void authorizationTest() throws InterruptedException {
-        driver.get(AUTHORIZATIONPAGE);
+    public void authorizationTest(){
+        driver.get(AUTHORIZATION_PAGE);
         authorizationPage.logIn();
-        Thread.sleep(500);
-        seleniumTutorialPage.checkProfileMenuIsDisplayed();
+        seleniumTutorialPage.profileMenuShouldBeDisplayed();
     }
 
     @Test(priority = 4)
     public void goToAnotherPageTest() {
-        driver.get(MAINPAGE);
+        driver.get(MAIN_PAGE);
         mainPage.careersButtonClick();
         String careersText = careersPage.careersText.getText();
         Assert.assertEquals(careersText,"CAREER");
     }
 
     @Test(priority = 5)
-    public void practiceSite2Authorization() throws InterruptedException, IOException {
-        driver.get(PRACTICESITE2AUTHORIZATIONPAGE);
+    public void practiceSite2AuthorizationTest(){
+        driver.get(PRACTICE_SITE_2_AUTHORIZATION_PAGE);
         authorizationPracticeSite2Page.authorizationPracticeSite2();
+        authorizationPracticeSite2Page.textLoginShouldBeVisible();
         String textLogIn = authorizationPracticeSite2Page.textLogIn.getText();
         String textLogOutButton = authorizationPracticeSite2Page.LogOutButton.getText();
         Assert.assertEquals(textLogOutButton, "Logout");

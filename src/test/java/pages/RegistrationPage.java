@@ -7,8 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 import waits.Waiting;
 
 import static contsants.Constants.*;
+import static org.openqa.selenium.support.PageFactory.initElements;
 
-public class RegistrationPage extends PageFactory {
+public class RegistrationPage{
     private WebDriver driver;
     @FindBy(xpath = "//*[@id=\"user_name\"]")
     private WebElement fullNameForm;
@@ -25,11 +26,11 @@ public class RegistrationPage extends PageFactory {
 
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        initElements(driver, this);
     }
 
     public void registration() {
-        Waiting.waitingElementsDisplay(fullNameForm, driver).sendKeys(FULLNAME);
+        Waiting.waitingElementsDisplay(fullNameForm, driver).sendKeys(FULL_NAME);
         emailForm.sendKeys(EMAIL);
         passwordForm.sendKeys(PASSWORD);
         agreeButton.click();
