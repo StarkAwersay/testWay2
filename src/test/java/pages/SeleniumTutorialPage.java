@@ -8,9 +8,9 @@ import waits.Waiting;
 
 import static org.openqa.selenium.support.PageFactory.initElements;
 
-public class SeleniumTutorialPage{
+public class SeleniumTutorialPage {
     private WebDriver driver;
-    @FindBy(xpath = "//li[contains(@class,'dropdown')]/a")
+    @FindBy(css = "a[class*='profile']")
     private WebElement profileMenu;
 
     public SeleniumTutorialPage(WebDriver driver) {
@@ -18,8 +18,8 @@ public class SeleniumTutorialPage{
         initElements(driver, this);
     }
 
-    public void profileMenuShouldBeDisplayed(){
-        Assert.assertTrue(Waiting.waitingElementsDisplay(profileMenu,driver).isDisplayed());
+    public void profileMenuShouldBeDisplayed() {
+        Waiting.waitingElementsDisplay(profileMenu, driver).isDisplayed();
     }
 }
 

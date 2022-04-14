@@ -3,8 +3,6 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import waits.Waiting;
 
 import static contsants.Constants.*;
@@ -12,18 +10,18 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class AuthorizationPracticeSite2Page {
     private WebDriver driver;
-    @FindBy(xpath = "//*[@id=\"username\"]")
+    @FindBy(id = "username")
     private WebElement usernameField;
-    @FindBy(xpath = "//*[@id=\"password\"]")
+    @FindBy(id = "password")
     private WebElement passwordField;
-    @FindBy(css = "#formly_1_input_username_0")
+    @FindBy(css = "input[id *='input_username']")
     private WebElement descriptionUsernameField;
-    @FindBy(xpath = "//div[contains(@class,'form-actions')]/button")
+    @FindBy(css = "button[class*='btn']")
     private WebElement logInButton;
-    @FindBy(xpath = "//div[contains(@class,'ng-scope')]/p[contains(@class,'ng-scope')]")
+    @FindBy(xpath = "//div/p[contains(text(),'Yo')]")
     public WebElement textLogIn;
-    @FindBy(linkText= "Logout")
-    public WebElement LogOutButton;
+    @FindBy(linkText = "Logout")
+    public WebElement logOutButton;
 
 
     public AuthorizationPracticeSite2Page(WebDriver driver) {
@@ -31,14 +29,15 @@ public class AuthorizationPracticeSite2Page {
         initElements(driver, this);
     }
 
-    public void authorizationPracticeSite2() {
+    public void authorization() {
         Waiting.waitingElementsDisplay(usernameField, driver).sendKeys(USERNAME_FOR_PRACTICE_SITE);
         passwordField.sendKeys(PASSWORD_FOR_PRACTICE_SITE);
         descriptionUsernameField.sendKeys(USERNAME_DESCRIPTION_FOR_PRACTICE_SITE);
         logInButton.click();
     }
-    public void textLoginShouldBeVisible(){
-        Assert.assertTrue(Waiting.waitingElementsDisplay(textLogIn,driver).isDisplayed());
+
+    public void textLoginShouldBeVisible() {
+        Waiting.waitingElementsDisplay(textLogIn, driver).isDisplayed();
     }
 
 }

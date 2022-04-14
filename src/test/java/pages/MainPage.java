@@ -10,59 +10,72 @@ import waits.Waiting;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 
-public class MainPage{
+public class MainPage {
     private WebDriver driver;
-    @FindBy(xpath = "//div[contains(@class,'ast-above-header-bar')]")
+    @FindBy(className = "ast-above-header")
     private WebElement contactDetailsBanner;
-    @FindBy(xpath = "//div[contains(@class,'site-primary-header-wrap ast')]")
+    @FindBy(css = "div[class*='site-primary-header-wrap ast']")
     private WebElement horizontalMenu;
-    @FindBy(xpath = "//div[contains(@class,'dialog-widget-content dialog-lightbox-widget-content animated')]")
+    @FindBy(css = "div[id*='2']>div[class*='widget']")
     private WebElement advertisingBanner;
     @FindBy(xpath = "//a[contains(@class,'menu-link')]/span[contains(text(),'Home')]")
     private WebElement homeButton;
-    @FindBy(xpath = "//div[contains(@class,'elementor-widget')]/div[contains(@class,'elementor-element elementor-element-8')]")
+    @FindBy(className = "elementor-element-8e1bc6a")
     private WebElement certificationPanel;
-    @FindBy(xpath = "//li[contains(@id,'27621')]/a[contains(@href,'careers')]")
+    @FindBy(css = "li[id*='menu']>a[href*='careers']")
     private WebElement careersButton;
     @FindBy(xpath = "//li[contains(@id,'27617')]/a[contains(@class,'menu-link')]")
     private WebElement resourcesButton;
-    @FindBy(xpath = "//div[contains(@class,'animated')]/div[contains(@class,'close-button')]")
+    @FindBy(css = "div[class*='close-button']")
     private WebElement closeButton;
-    @FindBy(xpath = "//div[contains(@class,'pp-slider-arrow swiper-button-next swiper-button-next-c50f9f0')]")
+    @FindBy(css = " div[class*='box-carousel-wrap']>div[aria-label*='Next']")
     private WebElement sliderButton;
-    @FindBy(xpath = "//div[contains(@data-id,'50')]/div[contains(@class,'swiper-container')]")
+    @FindBy(css = "div[data-id*='50']>div[class*='swiper']")
     public WebElement coursePanel;
-    @FindBy(xpath = "//div[contains(@class,'swiper-wrapper elementor-slides')]/div[contains(@class,'swiper-slide-active')]")
+    @FindBy(css = "div[class*='elementor']>div[class*='swiper-slide-active']")
     public WebElement activeBlockSwiper;
+    @FindBy(css = "img[src*='automationlogo']")
+    private WebElement elementSlider;
+
     public MainPage(WebDriver driver) {
         this.driver = driver;
         initElements(driver, this);
     }
 
-    public void advertisingBannerShouldBeVisible(){
+    public void advertisingBannerShouldBeVisible() {
         resourcesButton.click();
-        Assert.assertTrue(Waiting.waitingElementsDisplay(advertisingBanner, driver).isDisplayed());
+        Waiting.waitingElementsDisplay(advertisingBanner, driver).isDisplayed();
         closeButton.click();
     }
-    public void contactDetailsBannerShouldBeVisible(){
-        Assert.assertTrue(Waiting.waitingElementsDisplay(contactDetailsBanner,driver).isDisplayed());
-    }
-    public void horizontalMenuShouldBeVisible(){
-        Assert.assertTrue(Waiting.waitingElementsDisplay(horizontalMenu,driver).isDisplayed());
-    }
-    public void certificationPanelShouldBeVisible(){
-        Assert.assertTrue(Waiting.waitingElementsDisplay(certificationPanel,driver).isDisplayed());
-    }
-    public void BlockSliderShouldBeVisible(){
-        Assert.assertTrue(Waiting.waitingElementsDisplay(activeBlockSwiper,driver).isDisplayed());
-    }
-    public void blockSliderSwipe(){
-        Actions move = new Actions(driver);
-        move.dragAndDropBy(activeBlockSwiper,-500,0).perform();
+
+    public void contactDetailsBannerShouldBeVisible() {
+        Waiting.waitingElementsDisplay(contactDetailsBanner, driver).isDisplayed();
     }
 
-    public void sliderButtonClick(){
+    public void horizontalMenuShouldBeVisible() {
+        Waiting.waitingElementsDisplay(horizontalMenu, driver).isDisplayed();
+    }
+
+    public void certificationPanelShouldBeVisible() {
+        Waiting.waitingElementsDisplay(certificationPanel, driver).isDisplayed();
+    }
+
+    public void BlockSliderShouldBeVisible() {
+        Waiting.waitingElementsDisplay(activeBlockSwiper, driver).isDisplayed();
+    }
+
+    public void blockSliderSwipe() {
+        Actions move = new Actions(driver);
+        move.dragAndDropBy(activeBlockSwiper, -500, 0).perform();
+    }
+
+    public void sliderButtonClick() {
         sliderButton.click();
+        resourcesButton.click();
+    }
+
+    public void elementSliderShouldBeVisible() {
+        Waiting.waitingElementsDisplay(elementSlider, driver).isDisplayed();
     }
 
     public void careersButtonClick() {

@@ -33,6 +33,7 @@ public class TestMain {
         authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         careersPage = new CareersPage(driver);
     }
+
     @Test(priority = 1)
     public void mainPageTest() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
@@ -45,12 +46,11 @@ public class TestMain {
         String oldBlockSliderText = mainPage.activeBlockSwiper.getText();
         mainPage.blockSliderSwipe();
         String newBlockSliderText = mainPage.activeBlockSwiper.getText();
-        softAssert.assertEquals(oldBlockSliderText,newBlockSliderText,"Свайп корректен");
+        softAssert.assertEquals(oldBlockSliderText, newBlockSliderText, "Свайп корректен");
         mainPage.sliderButtonClick();
+        mainPage.elementSliderShouldBeVisible();
         mainPage.horizontalMenuShouldBeVisible();
-        Thread.sleep(300);
         String newCoursePanel = mainPage.coursePanel.getText();
-        System.out.println(newCoursePanel);
         Assert.assertEquals(newCoursePanel, "Cypress - Learn In-depth implementation on live projects\n" +
                 "Get Started\n" +
                 "Appium Mobile Automation Testing for Android and IOS\n" +
@@ -60,13 +60,14 @@ public class TestMain {
     }
 
     @Test(priority = 2)
-    public void registrationTest(){
+    public void registrationTest() {
         driver.get(REGISTRATION_PAGE);
         registrationPage.registration();
         seleniumTutorialPage.profileMenuShouldBeDisplayed();
     }
+
     @Test(priority = 3)
-    public void authorizationTest(){
+    public void authorizationTest() {
         driver.get(AUTHORIZATION_PAGE);
         authorizationPage.logIn();
         seleniumTutorialPage.profileMenuShouldBeDisplayed();
@@ -77,16 +78,16 @@ public class TestMain {
         driver.get(MAIN_PAGE);
         mainPage.careersButtonClick();
         String careersText = careersPage.careersText.getText();
-        Assert.assertEquals(careersText,"CAREER");
+        Assert.assertEquals(careersText, "CAREER");
     }
 
     @Test(priority = 5)
-    public void practiceSite2AuthorizationTest(){
+    public void practiceSite2AuthorizationTest() {
         driver.get(PRACTICE_SITE_2_AUTHORIZATION_PAGE);
-        authorizationPracticeSite2Page.authorizationPracticeSite2();
+        authorizationPracticeSite2Page.authorization();
         authorizationPracticeSite2Page.textLoginShouldBeVisible();
         String textLogIn = authorizationPracticeSite2Page.textLogIn.getText();
-        String textLogOutButton = authorizationPracticeSite2Page.LogOutButton.getText();
+        String textLogOutButton = authorizationPracticeSite2Page.logOutButton.getText();
         Assert.assertEquals(textLogOutButton, "Logout");
         Assert.assertEquals(textLogIn, "You're logged in!!", "Регистрация не прошла");
     }

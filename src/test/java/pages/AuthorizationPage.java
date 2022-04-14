@@ -9,19 +9,19 @@ import static contsants.Constants.EMAIL;
 import static contsants.Constants.PASSWORD;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
-public class AuthorizationPage{
+public class AuthorizationPage {
     private WebDriver driver;
-    @FindBy(css= "#email")
+    @FindBy(css = "#email")
     private WebElement logInEmailForm;
     @FindBy(css = "#password")
     private WebElement logInPasswordForm;
-    @FindBy(xpath = "//div[contains(@class,'content-center')]/input")
+    @FindBy(css = "input[name='commit']")
     private WebElement logInButton;
 
 
     public AuthorizationPage(WebDriver driver) {
         this.driver = driver;
-       initElements(driver, this);
+        initElements(driver, this);
     }
 
 

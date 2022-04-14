@@ -9,19 +9,19 @@ import waits.Waiting;
 import static contsants.Constants.*;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
-public class RegistrationPage{
+public class RegistrationPage {
     private WebDriver driver;
-    @FindBy(xpath = "//*[@id=\"user_name\"]")
+    @FindBy(id = "user_name")
     private WebElement fullNameForm;
-    @FindBy(xpath = "//*[@id=\"user_email\"]")
+    @FindBy(id = "user_email")
     private WebElement emailForm;
-    @FindBy(xpath = "//*[@id=\"password\"]")
+    @FindBy(id = "password")
     private WebElement passwordForm;
-    @FindBy(xpath = "//*[@id=\"allow_marketing_emails\"]")
+    @FindBy(id = "allow_marketing_emails")
     private WebElement agreeButton;
-    @FindBy(xpath = "//div[contains(@class,'m-b-1')]/input")
+    @FindBy(css = "[data-testid*='signup']")
     private WebElement signUpRegistrationButton;
-    @FindBy(xpath = "//a[contains(@class,'my-profile-dropdown')]")
+    @FindBy(css = "a[class*='profile']")
     private WebElement profileButton;
 
     public RegistrationPage(WebDriver driver) {
@@ -35,6 +35,6 @@ public class RegistrationPage{
         passwordForm.sendKeys(PASSWORD);
         agreeButton.click();
         signUpRegistrationButton.click();
-        Waiting.waitingElementsDisplay(profileButton,driver);
+        Waiting.waitingElementsDisplay(profileButton, driver);
     }
 }

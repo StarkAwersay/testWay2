@@ -9,10 +9,11 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class CareersPage {
     private WebDriver driver;
-    @FindBy(xpath = "//div[contains(@class,'elementor')]/h1")
+    @FindBy(xpath = "//h1[contains(text(),'CAREER')]")
     public WebElement careersText;
-    public CareersPage(WebDriver driver){
+
+    public CareersPage(WebDriver driver) {
         this.driver = driver;
-        initElements(driver,this);
+        initElements(driver, this);
     }
 }
