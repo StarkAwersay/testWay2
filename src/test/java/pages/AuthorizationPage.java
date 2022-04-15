@@ -17,13 +17,11 @@ public class AuthorizationPage {
     private WebElement logInPasswordForm;
     @FindBy(css = "input[name='commit']")
     private WebElement logInButton;
-
-
+    
     public AuthorizationPage(WebDriver driver) {
         this.driver = driver;
         initElements(driver, this);
     }
-
 
     public void logIn() {
         Waiting.waitingElementsDisplay(logInEmailForm, driver).sendKeys(EMAIL);

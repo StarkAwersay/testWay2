@@ -46,7 +46,7 @@ public class TestMain {
         String oldBlockSliderText = mainPage.activeBlockSwiper.getText();
         mainPage.blockSliderSwipe();
         String newBlockSliderText = mainPage.activeBlockSwiper.getText();
-        softAssert.assertEquals(oldBlockSliderText, newBlockSliderText, "Свайп корректен");
+        softAssert.assertEquals(oldBlockSliderText, newBlockSliderText, "Свайп не корректен");
         mainPage.sliderButtonClick();
         mainPage.elementSliderShouldBeVisible();
         mainPage.horizontalMenuShouldBeVisible();

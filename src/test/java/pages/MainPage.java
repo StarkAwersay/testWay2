@@ -14,27 +14,27 @@ public class MainPage {
     private WebDriver driver;
     @FindBy(className = "ast-above-header")
     private WebElement contactDetailsBanner;
-    @FindBy(css = "div[class*='site-primary-header-wrap ast']")
+    @FindBy(css = "[class*='site-primary-header-wrap ast']")
     private WebElement horizontalMenu;
-    @FindBy(css = "div[id*='2']>div[class*='widget']")
+    @FindBy(css = "[id*='2']>[class*='widget']")
     private WebElement advertisingBanner;
-    @FindBy(xpath = "//a[contains(@class,'menu-link')]/span[contains(text(),'Home')]")
+    @FindBy(css = "[id*='2757']>a>[class*='menu']")
     private WebElement homeButton;
     @FindBy(className = "elementor-element-8e1bc6a")
     private WebElement certificationPanel;
-    @FindBy(css = "li[id*='menu']>a[href*='careers']")
+    @FindBy(css = "[id*='menu']>[href*='careers']")
     private WebElement careersButton;
-    @FindBy(xpath = "//li[contains(@id,'27617')]/a[contains(@class,'menu-link')]")
+    @FindBy(css = "[id*='276']>[href='#']")
     private WebElement resourcesButton;
-    @FindBy(css = "div[class*='close-button']")
+    @FindBy(css = "[class*='close-button']")
     private WebElement closeButton;
-    @FindBy(css = " div[class*='box-carousel-wrap']>div[aria-label*='Next']")
+    @FindBy(css = "[class*='box']>[aria-label*='Next']")
     private WebElement sliderButton;
-    @FindBy(css = "div[data-id*='50']>div[class*='swiper']")
+    @FindBy(css = "[data-id*='50']>[class*='swiper']")
     public WebElement coursePanel;
-    @FindBy(css = "div[class*='elementor']>div[class*='swiper-slide-active']")
+    @FindBy(css = "[class*='elem']>[class*='slide-active']")
     public WebElement activeBlockSwiper;
-    @FindBy(css = "img[src*='automationlogo']")
+    @FindBy(css = "[src*='automationlogo']")
     private WebElement elementSlider;
 
     public MainPage(WebDriver driver) {

@@ -22,20 +22,16 @@ public class AuthorizationPracticeSite2Page {
     public WebElement textLogIn;
     @FindBy(linkText = "Logout")
     public WebElement logOutButton;
-
-
     public AuthorizationPracticeSite2Page(WebDriver driver) {
         this.driver = driver;
         initElements(driver, this);
     }
-
     public void authorization() {
         Waiting.waitingElementsDisplay(usernameField, driver).sendKeys(USERNAME_FOR_PRACTICE_SITE);
         passwordField.sendKeys(PASSWORD_FOR_PRACTICE_SITE);
         descriptionUsernameField.sendKeys(USERNAME_DESCRIPTION_FOR_PRACTICE_SITE);
         logInButton.click();
     }
-
     public void textLoginShouldBeVisible() {
         Waiting.waitingElementsDisplay(textLogIn, driver).isDisplayed();
     }
