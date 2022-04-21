@@ -2,6 +2,7 @@ package tests;
 
 
 import chromeDriver.GetChromeDriver;
+import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -33,7 +34,10 @@ public class TestMain {
         authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         careersPage = new CareersPage(driver);
     }
-
+    @Severity(value = SeverityLevel.NORMAL)
+    @Epic("Тесты сайта Way2Automation")
+    @Feature("Тесты на главной странице")
+    @Story("Проверка наличия элементов, а также работы блоков слайдера и свайпера")
     @Test(priority = 1)
     public void mainPageTest() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
@@ -58,21 +62,30 @@ public class TestMain {
                 "Automation Architect Selenium with 7 live projects\n" +
                 "Get Started");
     }
-
+    @Severity(value = SeverityLevel.NORMAL)
+    @Epic("Тесты сайта Way2Automation")
+    @Feature("Тесты на авторизацию/регистрацию")
+    @Story("Регистрация на сайте Way2Automation")
     @Test(priority = 2)
     public void registrationTest() {
         driver.get(REGISTRATION_PAGE);
         registrationPage.registration();
         seleniumTutorialPage.profileMenuShouldBeDisplayed();
     }
-
+    @Severity(value = SeverityLevel.NORMAL)
+    @Epic("Тесты сайта Way2Automation")
+    @Feature("Тесты на авторизацию/регистрацию")
+    @Story("Авторизаця на сайте Way2Automation")
     @Test(priority = 3)
     public void authorizationTest() {
         driver.get(AUTHORIZATION_PAGE);
         authorizationPage.logIn();
         seleniumTutorialPage.profileMenuShouldBeDisplayed();
     }
-
+    @Severity(value = SeverityLevel.NORMAL)
+    @Epic("Тесты сайта Way2Automation")
+    @Feature("Тесты на главной странице")
+    @Story("Переход на страницу Career")
     @Test(priority = 4)
     public void goToAnotherPageTest() {
         driver.get(MAIN_PAGE);
@@ -80,8 +93,12 @@ public class TestMain {
         String careersText = careersPage.careersText.getText();
         Assert.assertEquals(careersText, "CAREER");
     }
+    @Severity(value = SeverityLevel.NORMAL)
 
     @Test(priority = 5)
+    @Epic("Тесты сайта Way2Automation")
+    @Feature("Тесты на авторизацию/регистрацию")
+    @Story("Авторизация на сайте PracticeSite2")
     public void practiceSite2AuthorizationTest() {
         driver.get(PRACTICE_SITE_2_AUTHORIZATION_PAGE);
         authorizationPracticeSite2Page.authorization();

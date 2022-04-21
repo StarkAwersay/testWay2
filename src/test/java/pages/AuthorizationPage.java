@@ -1,5 +1,7 @@
 package pages;
 
+import io.qameta.allure.Step;
+import org.checkerframework.common.value.qual.StaticallyExecutable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,12 +19,13 @@ public class AuthorizationPage {
     private WebElement logInPasswordForm;
     @FindBy(css = "input[name='commit']")
     private WebElement logInButton;
-    
+
     public AuthorizationPage(WebDriver driver) {
         this.driver = driver;
         initElements(driver, this);
     }
 
+    @Step("Авторизация на странице")
     public void logIn() {
         Waiting.waitingElementsDisplay(logInEmailForm, driver).sendKeys(EMAIL);
         logInPasswordForm.sendKeys(PASSWORD);
