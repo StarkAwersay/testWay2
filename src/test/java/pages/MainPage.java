@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 import waits.Waiting;
 
 import static org.openqa.selenium.support.PageFactory.initElements;
@@ -43,7 +42,7 @@ public class MainPage {
         initElements(driver, this);
     }
 
-    @Step("Проверка наличия рекламного бенера на странице и его закрытие")
+    @Step("Проверка наличия рекламного беннера на странице и его закрытие")
     public void advertisingBannerShouldBeVisible() {
         resourcesButton.click();
         Waiting.waitingElementsDisplay(advertisingBanner, driver).isDisplayed();
@@ -66,7 +65,7 @@ public class MainPage {
     }
 
     @Step("Проверка наличия блокслайдера")
-    public void BlockSliderShouldBeVisible() {
+    public void blockSliderShouldBeVisible() {
         Waiting.waitingElementsDisplay(activeBlockSwiper, driver).isDisplayed();
     }
 

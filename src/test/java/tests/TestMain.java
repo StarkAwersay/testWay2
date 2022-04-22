@@ -50,7 +50,7 @@ public class TestMain {
         mainPage.horizontalMenuShouldBeVisible();
         mainPage.certificationPanelShouldBeVisible();
         mainPage.advertisingBannerShouldBeVisible();
-        mainPage.BlockSliderShouldBeVisible();
+        mainPage.blockSliderShouldBeVisible();
         String oldBlockSliderText = mainPage.activeBlockSwiper.getText();
         mainPage.blockSliderSwipe();
         String newBlockSliderText = mainPage.activeBlockSwiper.getText();
