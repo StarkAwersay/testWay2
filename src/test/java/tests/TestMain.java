@@ -2,7 +2,11 @@ package tests;
 
 
 import chromeDriver.GetChromeDriver;
-import io.qameta.allure.*;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.Story;
+import io.qameta.allure.Feature;
+import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -13,7 +17,7 @@ import pages.*;
 
 
 import static contsants.Constants.*;
-
+@Epic("Тесты сайта Way2Automation")
 public class TestMain {
     private WebDriver driver;
     private MainPage mainPage;
@@ -34,8 +38,8 @@ public class TestMain {
         authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         careersPage = new CareersPage(driver);
     }
+
     @Severity(value = SeverityLevel.NORMAL)
-    @Epic("Тесты сайта Way2Automation")
     @Feature("Тесты на главной странице")
     @Story("Проверка наличия элементов, а также работы блоков слайдера и свайпера")
     @Test(priority = 1)
@@ -62,8 +66,8 @@ public class TestMain {
                 "Automation Architect Selenium with 7 live projects\n" +
                 "Get Started");
     }
+
     @Severity(value = SeverityLevel.NORMAL)
-    @Epic("Тесты сайта Way2Automation")
     @Feature("Тесты на авторизацию/регистрацию")
     @Story("Регистрация на сайте Way2Automation")
     @Test(priority = 2)
@@ -72,8 +76,8 @@ public class TestMain {
         registrationPage.registration();
         seleniumTutorialPage.profileMenuShouldBeDisplayed();
     }
+
     @Severity(value = SeverityLevel.NORMAL)
-    @Epic("Тесты сайта Way2Automation")
     @Feature("Тесты на авторизацию/регистрацию")
     @Story("Авторизаця на сайте Way2Automation")
     @Test(priority = 3)
@@ -82,8 +86,8 @@ public class TestMain {
         authorizationPage.logIn();
         seleniumTutorialPage.profileMenuShouldBeDisplayed();
     }
+
     @Severity(value = SeverityLevel.NORMAL)
-    @Epic("Тесты сайта Way2Automation")
     @Feature("Тесты на главной странице")
     @Story("Переход на страницу Career")
     @Test(priority = 4)
@@ -93,10 +97,9 @@ public class TestMain {
         String careersText = careersPage.careersText.getText();
         Assert.assertEquals(careersText, "CAREER");
     }
-    @Severity(value = SeverityLevel.NORMAL)
 
+    @Severity(value = SeverityLevel.NORMAL)
     @Test(priority = 5)
-    @Epic("Тесты сайта Way2Automation")
     @Feature("Тесты на авторизацию/регистрацию")
     @Story("Авторизация на сайте PracticeSite2")
     public void practiceSite2AuthorizationTest() {
