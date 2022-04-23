@@ -42,14 +42,14 @@ public class MainPage {
         initElements(driver, this);
     }
 
-    @Step("Проверка наличия рекламного беннера на странице и его закрытие")
+    @Step("Проверка наличия рекламного баннера на странице и его закрытие")
     public void advertisingBannerShouldBeVisible() {
         resourcesButton.click();
         Waiting.waitingElementsDisplay(advertisingBanner, driver).isDisplayed();
         closeButton.click();
     }
 
-    @Step("Проверка наличия банера с контактами")
+    @Step("Проверка наличия баннера с контактами")
     public void contactDetailsBannerShouldBeVisible() {
         Waiting.waitingElementsDisplay(contactDetailsBanner, driver).isDisplayed();
     }

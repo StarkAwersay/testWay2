@@ -99,9 +99,9 @@ public class TestMain {
     }
 
     @Severity(value = SeverityLevel.NORMAL)
-    @Test(priority = 5)
     @Feature("Тесты на авторизацию/регистрацию")
     @Story("Авторизация на сайте PracticeSite2")
+    @Test(priority = 5)
     public void practiceSite2AuthorizationTest() {
         driver.get(PRACTICE_SITE_2_AUTHORIZATION_PAGE);
         authorizationPracticeSite2Page.authorization();
