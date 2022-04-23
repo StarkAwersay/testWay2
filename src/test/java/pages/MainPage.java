@@ -1,10 +1,10 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 import waits.Waiting;
 
 import static org.openqa.selenium.support.PageFactory.initElements;
@@ -42,42 +42,51 @@ public class MainPage {
         initElements(driver, this);
     }
 
+    @Step("Проверка наличия рекламного баннера на странице и его закрытие")
     public void advertisingBannerShouldBeVisible() {
         resourcesButton.click();
         Waiting.waitingElementsDisplay(advertisingBanner, driver).isDisplayed();
         closeButton.click();
     }
 
+    @Step("Проверка наличия баннера с контактами")
     public void contactDetailsBannerShouldBeVisible() {
         Waiting.waitingElementsDisplay(contactDetailsBanner, driver).isDisplayed();
     }
 
+    @Step("Проверка наличия горизонтального меню")
     public void horizontalMenuShouldBeVisible() {
         Waiting.waitingElementsDisplay(horizontalMenu, driver).isDisplayed();
     }
 
+    @Step("Проверка наличия панели с сертификатами")
     public void certificationPanelShouldBeVisible() {
         Waiting.waitingElementsDisplay(certificationPanel, driver).isDisplayed();
     }
 
-    public void BlockSliderShouldBeVisible() {
+    @Step("Проверка наличия блокслайдера")
+    public void blockSliderShouldBeVisible() {
         Waiting.waitingElementsDisplay(activeBlockSwiper, driver).isDisplayed();
     }
 
+    @Step("Свайп блок слайдера")
     public void blockSliderSwipe() {
         Actions move = new Actions(driver);
         move.dragAndDropBy(activeBlockSwiper, -500, 0).perform();
     }
 
+    @Step("Нажатие на кнопку блока свайпера")
     public void sliderButtonClick() {
         sliderButton.click();
         resourcesButton.click();
     }
 
+    @Step("Проверка наличия элементов слайдера")
     public void elementSliderShouldBeVisible() {
         Waiting.waitingElementsDisplay(elementSlider, driver).isDisplayed();
     }
 
+    @Step("Нажатие на кнопку Career")
     public void careersButtonClick() {
         careersButton.click();
     }

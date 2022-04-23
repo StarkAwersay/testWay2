@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,6 +29,7 @@ public class AuthorizationPracticeSite2Page {
         initElements(driver, this);
     }
 
+    @Step("Авторизация на странице")
     public void authorization() {
         Waiting.waitingElementsDisplay(usernameField, driver).sendKeys(USERNAME_FOR_PRACTICE_SITE);
         passwordField.sendKeys(PASSWORD_FOR_PRACTICE_SITE);
@@ -35,6 +37,7 @@ public class AuthorizationPracticeSite2Page {
         logInButton.click();
     }
 
+    @Step("Проверка того, что авторизация была успешна")
     public void textLoginShouldBeVisible() {
         Waiting.waitingElementsDisplay(textLogIn, driver).isDisplayed();
     }

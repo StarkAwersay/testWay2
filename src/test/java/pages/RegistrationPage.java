@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,6 +30,7 @@ public class RegistrationPage {
         initElements(driver, this);
     }
 
+    @Step("Регистрация на сайте")
     public void registration() {
         Waiting.waitingElementsDisplay(fullNameForm, driver).sendKeys(FULL_NAME);
         emailForm.sendKeys(EMAIL);

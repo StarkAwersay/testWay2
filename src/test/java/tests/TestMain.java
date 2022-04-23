@@ -2,6 +2,11 @@ package tests;
 
 
 import chromeDriver.GetChromeDriver;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.Story;
+import io.qameta.allure.Feature;
+import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -12,7 +17,7 @@ import pages.*;
 
 
 import static contsants.Constants.*;
-
+@Epic("Тесты сайта Way2Automation")
 public class TestMain {
     private WebDriver driver;
     private MainPage mainPage;
@@ -34,6 +39,9 @@ public class TestMain {
         careersPage = new CareersPage(driver);
     }
 
+    @Severity(value = SeverityLevel.NORMAL)
+    @Feature("Тесты на главной странице")
+    @Story("Проверка наличия элементов, а также работы блоков слайдера и свайпера")
     @Test(priority = 1)
     public void mainPageTest() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
@@ -42,7 +50,7 @@ public class TestMain {
         mainPage.horizontalMenuShouldBeVisible();
         mainPage.certificationPanelShouldBeVisible();
         mainPage.advertisingBannerShouldBeVisible();
-        mainPage.BlockSliderShouldBeVisible();
+        mainPage.blockSliderShouldBeVisible();
         String oldBlockSliderText = mainPage.activeBlockSwiper.getText();
         mainPage.blockSliderSwipe();
         String newBlockSliderText = mainPage.activeBlockSwiper.getText();
@@ -59,6 +67,9 @@ public class TestMain {
                 "Get Started");
     }
 
+    @Severity(value = SeverityLevel.NORMAL)
+    @Feature("Тесты на авторизацию/регистрацию")
+    @Story("Регистрация на сайте Way2Automation")
     @Test(priority = 2)
     public void registrationTest() {
         driver.get(REGISTRATION_PAGE);
@@ -66,6 +77,9 @@ public class TestMain {
         seleniumTutorialPage.profileMenuShouldBeDisplayed();
     }
 
+    @Severity(value = SeverityLevel.NORMAL)
+    @Feature("Тесты на авторизацию/регистрацию")
+    @Story("Авторизаця на сайте Way2Automation")
     @Test(priority = 3)
     public void authorizationTest() {
         driver.get(AUTHORIZATION_PAGE);
@@ -73,6 +87,9 @@ public class TestMain {
         seleniumTutorialPage.profileMenuShouldBeDisplayed();
     }
 
+    @Severity(value = SeverityLevel.NORMAL)
+    @Feature("Тесты на главной странице")
+    @Story("Переход на страницу Career")
     @Test(priority = 4)
     public void goToAnotherPageTest() {
         driver.get(MAIN_PAGE);
@@ -81,6 +98,9 @@ public class TestMain {
         Assert.assertEquals(careersText, "CAREER");
     }
 
+    @Severity(value = SeverityLevel.NORMAL)
+    @Feature("Тесты на авторизацию/регистрацию")
+    @Story("Авторизация на сайте PracticeSite2")
     @Test(priority = 5)
     public void practiceSite2AuthorizationTest() {
         driver.get(PRACTICE_SITE_2_AUTHORIZATION_PAGE);
