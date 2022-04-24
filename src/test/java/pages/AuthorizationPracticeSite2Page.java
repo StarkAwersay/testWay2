@@ -12,17 +12,19 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 public class AuthorizationPracticeSite2Page {
     private WebDriver driver;
     @FindBy(id = "username")
-    private WebElement usernameField;
+    public WebElement usernameField;
     @FindBy(id = "password")
-    private WebElement passwordField;
+    public WebElement passwordField;
     @FindBy(css = "input[id *='input_username']")
-    private WebElement descriptionUsernameField;
+    public WebElement descriptionUsernameField;
     @FindBy(css = "button[class*='btn']")
-    private WebElement logInButton;
+    public WebElement logInButton;
     @FindBy(xpath = "//div/p[contains(text(),'Yo')]")
     public WebElement textLogIn;
     @FindBy(linkText = "Logout")
     public WebElement logOutButton;
+    @FindBy(xpath = "/html/body/div[3]/div/div/div/div[2]")
+    public WebElement errorText;
 
     public AuthorizationPracticeSite2Page(WebDriver driver) {
         this.driver = driver;
@@ -36,6 +38,7 @@ public class AuthorizationPracticeSite2Page {
         descriptionUsernameField.sendKeys(USERNAME_DESCRIPTION_FOR_PRACTICE_SITE);
         logInButton.click();
     }
+
 
     @Step("Проверка того, что авторизация была успешна")
     public void textLoginShouldBeVisible() {

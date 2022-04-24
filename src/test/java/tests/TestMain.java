@@ -11,12 +11,15 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.*;
+import waits.Waiting;
 
 
 import static contsants.Constants.*;
+
 @Epic("Тесты сайта Way2Automation")
 public class TestMain {
     private WebDriver driver;
@@ -112,6 +115,20 @@ public class TestMain {
         Assert.assertEquals(textLogIn, "You're logged in!!", "Регистрация не прошла");
     }
 
+    @DataProvider(name = "LogInDataProvider")
+    public Object[][] getData() {
+        Object[][] data = {{"angular", "password", "description"}, {"angularr", "password", "description"}, {"angular", "passwrd", "de"}};
+        return data;
+    }
+
+    @Test(dataProvider = "LogInDataProvider")
+    public void pr2(String lg,String pw, String des){
+        driver.get(PRACTICE_SITE_2_AUTHORIZATION_PAGE);
+        Waiting.waitingElementsDisplay(authorizationPracticeSite2Page.usernameField, driver).sendKeys(lg);
+        authorizationPracticeSite2Page.passwordField.sendKeys(pw);
+        authorizationPracticeSite2Page.descriptionUsernameField.sendKeys(lg);
+        authorizationPracticeSite2Page.logInButton.click();
+    }
     @AfterMethod
     public void close() {
         driver.quit();
