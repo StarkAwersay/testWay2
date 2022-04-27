@@ -130,7 +130,6 @@ public class TestMain {
         } else if (des.length() <= 2) {
             authorizationPracticeSite2Page.descrText.click();
             Assert.assertTrue(Color.fromString("#A94442").equals(Color.fromString(authorizationPracticeSite2Page.descrText.getCssValue("color"))), "Text 'fieldName' color");
-            System.out.println("Все правильно");
 
         } else {
             authorizationPracticeSite2Page.textErrorShouldBeVisible();
