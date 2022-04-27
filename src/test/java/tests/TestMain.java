@@ -15,7 +15,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.*;
-import waits.Waiting;
 
 
 import static contsants.Constants.*;
@@ -62,12 +61,7 @@ public class TestMain {
         mainPage.elementSliderShouldBeVisible();
         mainPage.horizontalMenuShouldBeVisible();
         String newCoursePanel = mainPage.coursePanel.getText();
-        Assert.assertEquals(newCoursePanel, "Cypress - Learn In-depth implementation on live projects\n" +
-                "Get Started\n" +
-                "Appium Mobile Automation Testing for Android and IOS\n" +
-                "Get Started\n" +
-                "Automation Architect Selenium with 7 live projects\n" +
-                "Get Started");
+        Assert.assertEquals(newCoursePanel, "Cypress - Learn In-depth implementation on live projects\n" + "Get Started\n" + "Appium Mobile Automation Testing for Android and IOS\n" + "Get Started\n" + "Automation Architect Selenium with 7 live projects\n" + "Get Started");
     }
 
     @Severity(value = SeverityLevel.NORMAL)
@@ -117,18 +111,29 @@ public class TestMain {
 
     @DataProvider(name = "LogInDataProvider")
     public Object[][] getData() {
-        Object[][] data = {{"angular", "password", "description"}, {"angularr", "password", "description"}, {"angular", "passwrd", "de"}};
+        Object[][] data = {{"angular", "password", "description"}, {"angularr", "password", "description"}, {"angular", "passwrd", "description"}, {"angular", "password", "de"}};
         return data;
     }
 
     @Test(dataProvider = "LogInDataProvider")
-    public void pr2(String lg,String pw, String des){
+    public void dataProviderLogin(String lg, String pw, String des) {
         driver.get(PRACTICE_SITE_2_AUTHORIZATION_PAGE);
-        Waiting.waitingElementsDisplay(authorizationPracticeSite2Page.usernameField, driver).sendKeys(lg);
-        authorizationPracticeSite2Page.passwordField.sendKeys(pw);
-        authorizationPracticeSite2Page.descriptionUsernameField.sendKeys(lg);
-        authorizationPracticeSite2Page.logInButton.click();
+        authorizationPracticeSite2Page.loginInput(lg);
+        authorizationPracticeSite2Page.passwordInput(pw);
+        authorizationPracticeSite2Page.descriptionInput(des);
+        authorizationPracticeSite2Page.logIn();
+        if (lg == "angular" && pw == "password" && des == "description") {
+            authorizationPracticeSite2Page.textLoginShouldBeVisible();
+            String textLogIn = authorizationPracticeSite2Page.textLogIn.getText();
+            Assert.assertEquals(textLogIn, "You're logged in!!");
+        } else {
+            authorizationPracticeSite2Page.textErrorShouldBeVisible();
+            String errorText = authorizationPracticeSite2Page.errorText.getText();
+            Assert.assertEquals(errorText, "Username or password is incorrect");
+        }
+
     }
+
     @AfterMethod
     public void close() {
         driver.quit();

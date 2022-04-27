@@ -12,18 +12,18 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 public class AuthorizationPracticeSite2Page {
     private WebDriver driver;
     @FindBy(id = "username")
-    public WebElement usernameField;
+    private WebElement usernameField;
     @FindBy(id = "password")
-    public WebElement passwordField;
+    private WebElement passwordField;
     @FindBy(css = "input[id *='input_username']")
-    public WebElement descriptionUsernameField;
+    private WebElement descriptionUsernameField;
     @FindBy(css = "button[class*='btn']")
-    public WebElement logInButton;
+    private WebElement logInButton;
     @FindBy(xpath = "//div/p[contains(text(),'Yo')]")
     public WebElement textLogIn;
     @FindBy(linkText = "Logout")
     public WebElement logOutButton;
-    @FindBy(xpath = "/html/body/div[3]/div/div/div/div[2]")
+    @FindBy(xpath = "[class*=alert-danger]")
     public WebElement errorText;
 
     public AuthorizationPracticeSite2Page(WebDriver driver) {
@@ -39,6 +39,30 @@ public class AuthorizationPracticeSite2Page {
         logInButton.click();
     }
 
+    @Step("Ввод данных в поле login")
+    public void loginInput(String login) {
+        Waiting.waitingElementsDisplay(usernameField, driver).sendKeys(login);
+    }
+
+    @Step("Ввод данных в поле password")
+    public void passwordInput(String password) {
+        passwordField.sendKeys(password);
+    }
+
+    @Step("Ввод данных в поле description")
+    public void descriptionInput(String description) {
+        descriptionUsernameField.sendKeys(description);
+    }
+
+    @Step("Проверка наличия ошибки")
+    public void textErrorShouldBeVisible() {
+        Waiting.waitingElementsDisplay(errorText, driver).isDisplayed();
+    }
+
+    @Step("Нажатие на кнопку login")
+    public void logIn() {
+        logInButton.click();
+    }
 
     @Step("Проверка того, что авторизация была успешна")
     public void textLoginShouldBeVisible() {
