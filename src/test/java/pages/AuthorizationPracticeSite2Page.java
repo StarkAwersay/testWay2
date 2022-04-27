@@ -23,8 +23,10 @@ public class AuthorizationPracticeSite2Page {
     public WebElement textLogIn;
     @FindBy(linkText = "Logout")
     public WebElement logOutButton;
-    @FindBy(xpath = "[class*=alert-danger]")
+    @FindBy(css = "[class*=alert-danger]")
     public WebElement errorText;
+    @FindBy(css = "[class*=control-label] ")
+    public WebElement descrText;
 
     public AuthorizationPracticeSite2Page(WebDriver driver) {
         this.driver = driver;

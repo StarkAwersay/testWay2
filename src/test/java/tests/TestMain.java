@@ -8,6 +8,7 @@ import io.qameta.allure.Story;
 import io.qameta.allure.Feature;
 import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -122,20 +123,26 @@ public class TestMain {
         authorizationPracticeSite2Page.passwordInput(pw);
         authorizationPracticeSite2Page.descriptionInput(des);
         authorizationPracticeSite2Page.logIn();
-        if (lg == "angular" && pw == "password" && des == "description") {
+        if (lg == "angular" && pw == "password" && (des.length() >= 3)) {
             authorizationPracticeSite2Page.textLoginShouldBeVisible();
             String textLogIn = authorizationPracticeSite2Page.textLogIn.getText();
             Assert.assertEquals(textLogIn, "You're logged in!!");
+        } else if (des.length() <= 2) {
+            authorizationPracticeSite2Page.descrText.click();
+            Assert.assertTrue(Color.fromString("#A94442").equals(Color.fromString(authorizationPracticeSite2Page.descrText.getCssValue("color"))), "Text 'fieldName' color");
+            System.out.println("Миша, всё хуйня, давай по новой!!!! ");
+
         } else {
             authorizationPracticeSite2Page.textErrorShouldBeVisible();
             String errorText = authorizationPracticeSite2Page.errorText.getText();
             Assert.assertEquals(errorText, "Username or password is incorrect");
+
+
         }
-
     }
 
-    @AfterMethod
-    public void close() {
-        driver.quit();
+        @AfterMethod
+        public void close () {
+            driver.quit();
+        }
     }
-}
