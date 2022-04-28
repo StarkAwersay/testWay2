@@ -1,14 +1,13 @@
 package pages;
 
 import io.qameta.allure.Step;
-import org.checkerframework.common.value.qual.StaticallyExecutable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import waits.Waiting;
 
-import static contsants.Constants.EMAIL;
-import static contsants.Constants.PASSWORD;
+import static constants.Constants.EMAIL;
+import static constants.Constants.PASSWORD;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class AuthorizationPage {

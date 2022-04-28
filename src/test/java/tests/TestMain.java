@@ -8,15 +8,18 @@ import io.qameta.allure.Story;
 import io.qameta.allure.Feature;
 import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.*;
 
 
-import static contsants.Constants.*;
+import static constants.Constants.*;
+
 @Epic("Тесты сайта Way2Automation")
 public class TestMain {
     private WebDriver driver;
@@ -51,20 +54,15 @@ public class TestMain {
         mainPage.certificationPanelShouldBeVisible();
         mainPage.advertisingBannerShouldBeVisible();
         mainPage.blockSliderShouldBeVisible();
-        String oldBlockSliderText = mainPage.activeBlockSwiper.getText();
+        String oldBlockSliderText = mainPage.getBlockSliderText();
         mainPage.blockSliderSwipe();
-        String newBlockSliderText = mainPage.activeBlockSwiper.getText();
+        String newBlockSliderText = mainPage.getBlockSliderText();
         softAssert.assertEquals(oldBlockSliderText, newBlockSliderText, "Свайп не корректен");
         mainPage.sliderButtonClick();
         mainPage.elementSliderShouldBeVisible();
         mainPage.horizontalMenuShouldBeVisible();
-        String newCoursePanel = mainPage.coursePanel.getText();
-        Assert.assertEquals(newCoursePanel, "Cypress - Learn In-depth implementation on live projects\n" +
-                "Get Started\n" +
-                "Appium Mobile Automation Testing for Android and IOS\n" +
-                "Get Started\n" +
-                "Automation Architect Selenium with 7 live projects\n" +
-                "Get Started");
+        String newCoursePanel = mainPage.getCoursePanelText();
+        Assert.assertEquals(newCoursePanel, "Cypress - Learn In-depth implementation on live projects\n" + "Get Started\n" + "Appium Mobile Automation Testing for Android and IOS\n" + "Get Started\n" + "Automation Architect Selenium with 7 live projects\n" + "Get Started");
     }
 
     @Severity(value = SeverityLevel.NORMAL)
@@ -94,22 +92,38 @@ public class TestMain {
     public void goToAnotherPageTest() {
         driver.get(MAIN_PAGE);
         mainPage.careersButtonClick();
-        String careersText = careersPage.careersText.getText();
+        String careersText = careersPage.getCareersText();
         Assert.assertEquals(careersText, "CAREER");
+    }
+
+    @DataProvider(name = "LogInDataProvider")
+    public Object[][] getData() {
+        Object[][] data = {{"angular", "password", "description"}, {"angularr", "password", "description"}, {"angular", "passwrd", "description"}, {"angular", "password", "de"}};
+        return data;
     }
 
     @Severity(value = SeverityLevel.NORMAL)
     @Feature("Тесты на авторизацию/регистрацию")
     @Story("Авторизация на сайте PracticeSite2")
-    @Test(priority = 5)
-    public void practiceSite2AuthorizationTest() {
+    @Test(dataProvider = "LogInDataProvider")
+    public void dataProviderLogin(String login, String password, String description) {
         driver.get(PRACTICE_SITE_2_AUTHORIZATION_PAGE);
-        authorizationPracticeSite2Page.authorization();
-        authorizationPracticeSite2Page.textLoginShouldBeVisible();
-        String textLogIn = authorizationPracticeSite2Page.textLogIn.getText();
-        String textLogOutButton = authorizationPracticeSite2Page.logOutButton.getText();
-        Assert.assertEquals(textLogOutButton, "Logout");
-        Assert.assertEquals(textLogIn, "You're logged in!!", "Регистрация не прошла");
+        authorizationPracticeSite2Page.loginInput(login);
+        authorizationPracticeSite2Page.passwordInput(password);
+        authorizationPracticeSite2Page.descriptionInput(description);
+        authorizationPracticeSite2Page.logIn();
+        if (login == "angular" && password == "password" && (description.length() >= 3)) {
+            authorizationPracticeSite2Page.textLoginShouldBeVisible();
+            String textLogIn = authorizationPracticeSite2Page.getTextLogin();
+            Assert.assertEquals(textLogIn, "You're logged in!!");
+        } else if (description.length() <= 2) {
+            authorizationPracticeSite2Page.descriptionTextClick();
+            Assert.assertTrue(Color.fromString("#A94442").equals(Color.fromString(authorizationPracticeSite2Page.getDescriptionTextColor())));
+        } else {
+            authorizationPracticeSite2Page.textErrorShouldBeVisible();
+            String errorText = authorizationPracticeSite2Page.getErrorText();
+            Assert.assertEquals(errorText, "Username or password is incorrect");
+        }
     }
 
     @AfterMethod
