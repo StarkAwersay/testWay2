@@ -81,6 +81,18 @@ public class MainPage {
         resourcesButton.click();
     }
 
+    @Step("Получение текста блока-слайдера")
+    public String getBlockSliderText() {
+        String blockSliderText = activeBlockSwiper.getText();
+        return blockSliderText;
+    }
+
+    @Step("Получение текста панели с курсами")
+    public String getCoursePanelText() {
+        String coursePanelText = coursePanel.getText();
+        return coursePanelText;
+    }
+
     @Step("Проверка наличия элементов слайдера")
     public void elementSliderShouldBeVisible() {
         Waiting.waitingElementsDisplay(elementSlider, driver).isDisplayed();
