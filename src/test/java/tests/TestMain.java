@@ -7,22 +7,20 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.Story;
 import io.qameta.allure.Feature;
 import io.qameta.allure.SeverityLevel;
+import listeners.FailTestListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.Color;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import pages.*;
 
 
 import static constants.Constants.*;
-
+@Listeners(FailTestListener.class)
 @Epic("Тесты сайта Way2Automation")
 public class TestMain {
-    private WebDriver driver;
+    private static WebDriver driver;
     private MainPage mainPage;
     private AuthorizationPage authorizationPage;
     private RegistrationPage registrationPage;
@@ -40,6 +38,9 @@ public class TestMain {
         seleniumTutorialPage = new SeleniumTutorialPage(driver);
         authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         careersPage = new CareersPage(driver);
+    }
+    public static WebDriver getDriver(){
+        return driver;
     }
 
     @Severity(value = SeverityLevel.NORMAL)
