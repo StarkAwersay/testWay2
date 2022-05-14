@@ -9,6 +9,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.SeverityLevel;
 import listeners.FailTestListener;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -17,10 +18,11 @@ import pages.*;
 
 
 import static constants.Constants.*;
+
 @Listeners(FailTestListener.class)
 @Epic("Тесты сайта Way2Automation")
 public class TestMain {
-    private static WebDriver driver;
+    private WebDriver driver;
     private MainPage mainPage;
     private AuthorizationPage authorizationPage;
     private RegistrationPage registrationPage;
@@ -39,7 +41,8 @@ public class TestMain {
         authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         careersPage = new CareersPage(driver);
     }
-    public static WebDriver getDriver(){
+
+    public WebDriver getDriver() {
         return driver;
     }
 
@@ -128,7 +131,15 @@ public class TestMain {
     }
 
     @AfterMethod
-    public void close() {
-        driver.quit();
+    public void tearDownDriver() {
+        if (driver != null) {
+            try {
+                driver.quit();
+            } catch (WebDriverException e) {
+                System.out.println("***** CAUGHT EXCEPTION IN DRIVER TEARDOWN *****");
+                System.out.println(e);
+            }
+
+        }
     }
 }
