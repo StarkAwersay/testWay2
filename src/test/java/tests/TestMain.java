@@ -133,13 +133,7 @@ public class TestMain {
     @AfterMethod
     public void tearDownDriver() {
         if (driver != null) {
-            try {
-                driver.quit();
-            } catch (WebDriverException e) {
-                System.out.println("***** CAUGHT EXCEPTION IN DRIVER TEARDOWN *****");
-                System.out.println(e);
-            }
-
+            driver.quit();
         }
     }
 }
