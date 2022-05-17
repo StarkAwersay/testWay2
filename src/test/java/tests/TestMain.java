@@ -9,10 +9,13 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.SeverityLevel;
 import listeners.FailTestListener;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.Color;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
 import org.testng.asserts.SoftAssert;
 import pages.*;
 
@@ -132,8 +135,6 @@ public class TestMain {
 
     @AfterMethod
     public void tearDownDriver() {
-        if (driver != null) {
-            driver.quit();
-        }
+        driver.quit();
     }
 }
