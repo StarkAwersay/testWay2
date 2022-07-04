@@ -1,52 +1,47 @@
 package tests;
 
 import chromeDriver.GetChromeDriver;
-import org.openqa.selenium.Cookie;
+import cookies.ActionWithCookies;
+import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.SqlMainPage;
+import properties.Properties;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.FileWriter;
 
 public class TestCookies {
     private WebDriver driver;
     private SqlMainPage sqlMainPage;
+    private ActionWithCookies cookies;
+
     @BeforeMethod
-    public void BeforeTest(){
-        driver= GetChromeDriver.getChromeDriver();
+    public void BeforeTest() {
+        driver = GetChromeDriver.getChromeDriver();
         driver.manage().window().maximize();
         sqlMainPage = new SqlMainPage(driver);
+        cookies = new ActionWithCookies(driver);
     }
+
+    @Severity(SeverityLevel.NORMAL)
+    @Epic(value = "Тесты сайта 'Упражнения по sql'")
+    @Feature(value = "Тест на авторизацию")
+    @Story(value = "Авторизация с помощью cookies")
     @Test
     public void testCookie() throws IOException {
-        driver.get("https://www.sql-ex.ru/");
-        String Cookie;
-        File file2 = new File("C:\\Users\\4fran\\github.com\\StarkAwersay\\Nado\\testWay2\\cookies");
-        try (BufferedReader Buffreader = new BufferedReader(new FileReader(file2))) {
-            Cookie = Buffreader.readLine();
-        }
-        if (Cookie != null) {
-            org.openqa.selenium.Cookie cookie = new Cookie("PHPSESSID", Cookie);
-            driver.manage().addCookie(cookie);
-            driver.navigate().refresh();
+        driver.get(Properties.SQL_PAGE_URL);
+        String sessionId = cookies.returnSessionId();
+        if (sessionId != null) {
+            cookies.addingCookies(sessionId);
+            System.out.println(sessionId);
         } else {
             sqlMainPage.authorization();
-            File file1 = new File("C:\\Users\\4fran\\github.com\\StarkAwersay\\Nado\\testWay2\\cookies");
-            try (FileWriter fileWrite = new FileWriter(file1)) {
-                file1.delete();
-                file1.createNewFile();
-                fileWrite.write(driver.manage().getCookieNamed("PHPSESSID").getValue());
-            }
+            cookies.saveCookies();
         }
-        Assert.assertEquals(sqlMainPage.getProfileName(),"StarklAwersa");
-
+        Assert.assertEquals(sqlMainPage.getProfileName(), Properties.PROFILE_NAME_SQL_PAGE);
     }
 
 
