@@ -1,7 +1,7 @@
 package tests;
 
 import chromeDriver.GetChromeDriver;
-import cookies.ActionWithCookies;
+import cookies.CookiesHelper;
 import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -16,14 +16,13 @@ import java.io.IOException;
 public class TestCookies {
     private WebDriver driver;
     private SqlMainPage sqlMainPage;
-    private ActionWithCookies cookies;
+
 
     @BeforeMethod
     public void BeforeTest() {
         driver = GetChromeDriver.getChromeDriver();
         driver.manage().window().maximize();
         sqlMainPage = new SqlMainPage(driver);
-        cookies = new ActionWithCookies(driver);
     }
 
     @Severity(SeverityLevel.NORMAL)
@@ -33,15 +32,14 @@ public class TestCookies {
     @Test
     public void testCookie() throws IOException {
         driver.get(Properties.SQL_PAGE_URL);
-        String sessionId = cookies.returnSessionId();
+        String sessionId = CookiesHelper.returnSessionId();
         if (sessionId != null) {
-            cookies.addingCookies(sessionId);
-            System.out.println(sessionId);
+            CookiesHelper.addingCookies(driver,sessionId);
         } else {
             sqlMainPage.authorization();
-            cookies.saveCookies();
+            CookiesHelper.saveCookies(driver);
         }
-        Assert.assertEquals(sqlMainPage.getProfileName(), Properties.PROFILE_NAME_SQL_PAGE);
+        Assert.assertEquals(sqlMainPage.getProfileName(), Properties.PROFILE_NAME_SQL_PAGE,"Что-то не так...");
     }
 
 

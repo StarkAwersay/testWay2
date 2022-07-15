@@ -5,16 +5,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import properties.Properties;
+import waits.Waiting;
 
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class SqlMainPage {
     private WebDriver driver;
-    @FindBy(css = "td>input[name='login']")
+    @FindBy(css = "td>[name='login']")
     private WebElement logIn;
-    @FindBy(css = "td>input[name='psw']")
+    @FindBy(css = "td>[name='psw']")
     private WebElement password;
-    @FindBy(css = "td>input[value='Вход']")
+    @FindBy(css = "td>[value='Вход']")
     private WebElement logInButton;
     @FindBy(css = "b>a[href*='personal']")
     private WebElement profileName;
@@ -33,7 +34,7 @@ public class SqlMainPage {
 
     @Step("Получение имени профиля")
     public String getProfileName() {
-        String profileNameText = profileName.getText();
+        String profileNameText = Waiting.waitingElementsDisplay(profileName,driver).getText();
         return profileNameText;
     }
 }
