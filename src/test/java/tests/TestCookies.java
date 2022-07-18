@@ -2,7 +2,11 @@ package tests;
 
 import chromeDriver.GetChromeDriver;
 import cookies.CookiesHelper;
-import io.qameta.allure.*;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.Story;
+import io.qameta.allure.Feature;
+import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -16,7 +20,6 @@ import java.io.IOException;
 public class TestCookies {
     private WebDriver driver;
     private SqlMainPage sqlMainPage;
-
 
     @BeforeMethod
     public void BeforeTest() {
@@ -34,12 +37,12 @@ public class TestCookies {
         driver.get(Properties.SQL_PAGE_URL);
         String sessionId = CookiesHelper.returnSessionId();
         if (sessionId != null) {
-            CookiesHelper.addingCookies(driver,sessionId);
+            CookiesHelper.addingCookies(driver, sessionId);
         } else {
             sqlMainPage.authorization();
             CookiesHelper.saveCookies(driver);
         }
-        Assert.assertEquals(sqlMainPage.getProfileName(), Properties.PROFILE_NAME_SQL_PAGE,"Что-то не так...");
+        Assert.assertEquals(sqlMainPage.getProfileName(), Properties.PROFILE_NAME_SQL_PAGE, "Что-то не так...");
     }
 
 

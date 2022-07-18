@@ -34,7 +34,7 @@ public class SqlMainPage {
 
     @Step("Получение имени профиля")
     public String getProfileName() {
-        String profileNameText = Waiting.waitingElementsDisplay(profileName,driver).getText();
+        String profileNameText = Waiting.waitingElementsDisplay(profileName, driver).getText();
         return profileNameText;
     }
 }
