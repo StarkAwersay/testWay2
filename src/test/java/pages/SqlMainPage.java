@@ -13,10 +13,13 @@ public class SqlMainPage {
     private WebDriver driver;
     @FindBy(css = "td>[name='login']")
     private WebElement logIn;
+
     @FindBy(css = "td>[name='psw']")
     private WebElement password;
+
     @FindBy(css = "td>[value='Вход']")
     private WebElement logInButton;
+
     @FindBy(css = "b>a[href*='personal']")
     private WebElement profileName;
 
