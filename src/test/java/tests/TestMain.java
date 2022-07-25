@@ -17,12 +17,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.asserts.SoftAssert;
-import pages.AuthorizationPage;
-import pages.AuthorizationPracticeSite2Page;
-import pages.CareersPage;
-import pages.MainPage;
-import pages.RegistrationPage;
-import pages.SeleniumTutorialPage;
+import pages.*;
 
 
 import static constants.Constants.*;
@@ -37,6 +32,7 @@ public class TestMain {
     private SeleniumTutorialPage seleniumTutorialPage;
     private AuthorizationPracticeSite2Page authorizationPracticeSite2Page;
     private CareersPage careersPage;
+    private YandexMainPage googleMainPage;
 
     @BeforeMethod
     public void BeforeTest() {
@@ -48,6 +44,7 @@ public class TestMain {
         seleniumTutorialPage = new SeleniumTutorialPage(driver);
         authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         careersPage = new CareersPage(driver);
+        googleMainPage = new YandexMainPage(driver);
     }
 
     public WebDriver getDriver() {
@@ -135,6 +132,21 @@ public class TestMain {
             authorizationPracticeSite2Page.textErrorShouldBeVisible();
             String errorText = authorizationPracticeSite2Page.getErrorText();
             Assert.assertEquals(errorText, "Username or password is incorrect");
+        }
+    }
+
+    @Test
+    public void searchBarTest() throws InterruptedException {
+        driver.get("https://yandex.ru/");
+        googleMainPage.clickOnSearchBar();
+        googleMainPage.remoteFocus();
+        Assert.assertEquals(googleMainPage.getSearchBarText(), "Найдётся всё");
+        googleMainPage.Scroll();
+        Thread.sleep(2000);
+        if (googleMainPage.checkScroll() == 0) {
+            System.out.println("Скролла нет");
+        } else {
+            System.out.println("Страница проскроллена на " + googleMainPage.checkScroll() + " пикселей");
         }
     }
 
