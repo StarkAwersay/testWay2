@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,28 +22,13 @@ public class YandexMainPage {
         initElements(driver, this);
     }
 
+    @Step("Нажатие на поисковую строку")
     public void clickOnSearchBar() {
         searchBar.click();
     }
 
-    public void remoteFocus() {
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("arguments[0].blur();", searchBar);
-    }
-
-    public String getSearchBarText() {
-        String searchBarText = searchBarPlaceHolder.getText();
-        return searchBarText;
-    }
-
-    public Long checkScroll() {
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        Long value = (Long) jse.executeScript("return window.pageYOffset;");
-        return value;
-    }
-
-    public void Scroll() {
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollBy(0,250)");
+    @Step("Передача вебэелемента 'Поисковая строка' ")
+    public WebElement searchBar() {
+        return searchBar;
     }
 }

@@ -1,6 +1,7 @@
 package tests;
 
 
+import JavaScriptExecutors.JavaScriptExecutorsHelper;
 import chromeDriver.GetChromeDriver;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
@@ -32,7 +33,7 @@ public class TestMain {
     private SeleniumTutorialPage seleniumTutorialPage;
     private AuthorizationPracticeSite2Page authorizationPracticeSite2Page;
     private CareersPage careersPage;
-    private YandexMainPage googleMainPage;
+    private YandexMainPage yandexMainPage;
 
     @BeforeMethod
     public void BeforeTest() {
@@ -44,7 +45,7 @@ public class TestMain {
         seleniumTutorialPage = new SeleniumTutorialPage(driver);
         authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         careersPage = new CareersPage(driver);
-        googleMainPage = new YandexMainPage(driver);
+        yandexMainPage = new YandexMainPage(driver);
     }
 
     public WebDriver getDriver() {
@@ -135,19 +136,25 @@ public class TestMain {
         }
     }
 
+    @Severity(value = SeverityLevel.NORMAL)
+    @Feature("Тесты на JavaScriptExecutor")
+    @Story("Смена фокуса")
     @Test
-    public void searchBarTest() throws InterruptedException {
+    public void searchBarTest() {
         driver.get("https://yandex.ru/");
-        googleMainPage.clickOnSearchBar();
-        googleMainPage.remoteFocus();
-        Assert.assertEquals(googleMainPage.getSearchBarText(), "Найдётся всё");
-        googleMainPage.Scroll();
-        Thread.sleep(2000);
-        if (googleMainPage.checkScroll() == 0) {
-            System.out.println("Скролла нет");
-        } else {
-            System.out.println("Страница проскроллена на " + googleMainPage.checkScroll() + " пикселей");
-        }
+        yandexMainPage.clickOnSearchBar();
+        JavaScriptExecutorsHelper.removeFocus(driver, yandexMainPage.searchBar());
+        Assert.assertTrue(!(driver.switchTo().activeElement()).equals(yandexMainPage.searchBar()), "Фокус не изменился");
+    }
+
+    @Severity(value = SeverityLevel.NORMAL)
+    @Feature("Тесты на JavaScriptExecutor")
+    @Story("Проверка скроллинга страницы")
+    @Test
+    public void scrollTest() {
+        driver.get("https://yandex.ru/");
+        JavaScriptExecutorsHelper.scroll(driver);
+        Assert.assertEquals(JavaScriptExecutorsHelper.getScrollInformation(driver), (0), "Страница проскроллена");
     }
 
     @AfterMethod
