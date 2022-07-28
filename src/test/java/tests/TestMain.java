@@ -144,7 +144,7 @@ public class TestMain {
         driver.get("https://yandex.ru/");
         yandexMainPage.clickOnSearchBar();
         JavaScriptExecutorsHelper.removeFocus(driver, yandexMainPage.searchBar());
-        Assert.assertTrue(!(driver.switchTo().activeElement()).equals(yandexMainPage.searchBar()), "Фокус не изменился");
+        Assert.assertFalse(driver.switchTo().activeElement().equals(yandexMainPage.searchBar()), "Фокус не изменился");
     }
 
     @Severity(value = SeverityLevel.NORMAL)
@@ -154,7 +154,7 @@ public class TestMain {
     public void scrollTest() {
         driver.get("https://yandex.ru/");
         JavaScriptExecutorsHelper.scroll(driver);
-        Assert.assertEquals(JavaScriptExecutorsHelper.getScrollInformation(driver), (0), "Страница проскроллена");
+        Assert.assertEquals(JavaScriptExecutorsHelper.getScrollInformation(driver), 0, "Страница проскроллена");
     }
 
     @AfterMethod
