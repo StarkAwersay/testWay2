@@ -1,6 +1,7 @@
 package tests;
 
 
+import JavaScriptExecutors.JavaScriptExecutorsHelper;
 import chromeDriver.GetChromeDriver;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
@@ -18,11 +19,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.asserts.SoftAssert;
 import pages.AuthorizationPage;
-import pages.AuthorizationPracticeSite2Page;
-import pages.CareersPage;
 import pages.MainPage;
 import pages.RegistrationPage;
 import pages.SeleniumTutorialPage;
+import pages.AuthorizationPracticeSite2Page;
+import pages.CareersPage;
+import pages.YandexMainPage;
 
 
 import static constants.Constants.*;
@@ -37,6 +39,7 @@ public class TestMain {
     private SeleniumTutorialPage seleniumTutorialPage;
     private AuthorizationPracticeSite2Page authorizationPracticeSite2Page;
     private CareersPage careersPage;
+    private YandexMainPage yandexMainPage;
 
     @BeforeMethod
     public void BeforeTest() {
@@ -48,6 +51,7 @@ public class TestMain {
         seleniumTutorialPage = new SeleniumTutorialPage(driver);
         authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         careersPage = new CareersPage(driver);
+        yandexMainPage = new YandexMainPage(driver);
     }
 
     public WebDriver getDriver() {
@@ -136,6 +140,27 @@ public class TestMain {
             String errorText = authorizationPracticeSite2Page.getErrorText();
             Assert.assertEquals(errorText, "Username or password is incorrect");
         }
+    }
+
+    @Severity(value = SeverityLevel.NORMAL)
+    @Feature("Тесты на JavaScriptExecutor")
+    @Story("Смена фокуса")
+    @Test
+    public void searchBarTest() {
+        driver.get("https://yandex.ru/");
+        yandexMainPage.clickOnSearchBar();
+        JavaScriptExecutorsHelper.removeFocus(driver, yandexMainPage.searchBar());
+        Assert.assertFalse(driver.switchTo().activeElement().equals(yandexMainPage.searchBar()), "Фокус не изменился");
+    }
+
+    @Severity(value = SeverityLevel.NORMAL)
+    @Feature("Тесты на JavaScriptExecutor")
+    @Story("Проверка скроллинга страницы")
+    @Test
+    public void scrollTest() {
+        driver.get("https://yandex.ru/");
+        JavaScriptExecutorsHelper.scroll(driver);
+        Assert.assertEquals(JavaScriptExecutorsHelper.getScrollInformation(driver), 0, "Страница проскроллена");
     }
 
     @AfterMethod
