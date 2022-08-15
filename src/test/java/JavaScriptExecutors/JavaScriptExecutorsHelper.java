@@ -22,6 +22,6 @@ public class JavaScriptExecutorsHelper {
     @Step("Скролл")
     public static void scroll(WebDriver driver) {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollBy(0,0)");
+        jse.executeScript("window.scrollBy(0,150)");
     }
 }

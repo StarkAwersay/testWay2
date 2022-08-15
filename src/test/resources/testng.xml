@@ -1,9 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Test-Suite">
-    <test name="TestCookies">
+<suite name="Test-Suite" parallel="tests">
+    <test name="TestParallelTest">
         <classes>
             <class name="tests.ParallelTest"/>
+        </classes>
+    </test>
+    <test name="TestCookies">
+        <classes>
+            <class name="tests.TestCookies"/>
         </classes>
     </test>
 </suite>

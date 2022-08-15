@@ -1,13 +1,13 @@
 package tests;
 
-import chromeDriver.GetChromeDriver;
+import connectionHelp.UrlConnection;
 import cookies.CookiesHelper;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
 import io.qameta.allure.Story;
 import io.qameta.allure.Feature;
 import io.qameta.allure.SeverityLevel;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -16,14 +16,19 @@ import pages.SqlMainPage;
 import properties.Properties;
 
 import java.io.IOException;
+import java.net.URL;
+
+import static capabilites.Capabilities.getCapabilities;
 
 public class TestCookies {
-    private WebDriver driver;
     private SqlMainPage sqlMainPage;
+    public static RemoteWebDriver driver;
 
     @BeforeMethod
-    public void BeforeTest() {
-        driver = GetChromeDriver.getChromeDriver();
+    public void BeforeTest() throws IOException {
+        UrlConnection.urlConnection();
+        Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\node2.bat");
+        driver = new RemoteWebDriver(new URL("http://26.115.101.38:4444"), getCapabilities("chrome"));
         driver.manage().window().maximize();
         sqlMainPage = new SqlMainPage(driver);
     }
