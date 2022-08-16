@@ -1,5 +1,7 @@
 package connectionHelp;
 
+import properties.Properties;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -7,7 +9,7 @@ import java.net.URL;
 
 public class UrlConnection {
     public static void urlConnection() throws IOException {
-        String urlAdress = "http://26.115.101.38:4444/ui#/sessions";
+        String urlAdress = Properties.URL_HUB_GRID_SERVER;
         HttpURLConnection connection = null;
         URL url = null;
         try {
@@ -15,21 +17,10 @@ public class UrlConnection {
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
+            connection.setConnectTimeout(5000);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
-            try {
-                connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                connection.connect();
-            } catch (IOException x) {
-                try {
-                    connection = (HttpURLConnection) url.openConnection();
-                    connection.setRequestMethod("GET");
-                    connection.connect();
-                } catch (IOException c) {
-                }
-            }
         }
     }
 }

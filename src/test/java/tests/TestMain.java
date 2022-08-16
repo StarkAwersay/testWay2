@@ -3,6 +3,7 @@ package tests;
 
 import JavaScriptExecutors.JavaScriptExecutorsHelper;
 import chromeDriver.GetChromeDriver;
+import connectionHelp.UrlConnection;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
 import io.qameta.allure.Story;
@@ -10,6 +11,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.SeverityLevel;
 import listeners.FailTestListener;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -27,12 +29,17 @@ import pages.CareersPage;
 import pages.YandexMainPage;
 
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import static capabilites.Capabilities.getCapabilities;
 import static constants.Constants.*;
 
 @Listeners(FailTestListener.class)
 @Epic("Тесты сайта Way2Automation")
 public class TestMain {
-    private WebDriver driver;
+    public static RemoteWebDriver driver;
     private MainPage mainPage;
     private AuthorizationPage authorizationPage;
     private RegistrationPage registrationPage;
@@ -42,8 +49,11 @@ public class TestMain {
     private YandexMainPage yandexMainPage;
 
     @BeforeMethod
-    public void BeforeTest() {
-        driver = GetChromeDriver.getChromeDriver();
+    public void BeforeTest() throws IOException, InterruptedException {
+        Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\hub.bat").waitFor();
+        UrlConnection.urlConnection();
+        Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\node1.bat");
+        driver = new RemoteWebDriver(new URL("http://26.115.101.38:4444"), getCapabilities("chrome"));
         driver.manage().window().maximize();
         mainPage = new MainPage(driver);
         authorizationPage = new AuthorizationPage(driver);

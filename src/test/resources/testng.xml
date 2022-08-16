@@ -1,7 +1,7 @@
 <suite name="Test-Suite" parallel="tests">
-    <test name="TestParallelTest">
+    <test name="TestMainTest">
         <classes>
-            <class name="tests.ParallelTest"/>
+            <class name="tests.TestMain"/>
         </classes>
     </test>
     <test name="TestCookies">

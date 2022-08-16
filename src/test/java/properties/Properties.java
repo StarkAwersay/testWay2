@@ -5,4 +5,5 @@ public class Properties {
     public static final String LOGIN_SQL_PAGE = "Seeshstark";
     public static final String PASSWORD_SQL_PAGE = "rec!vPL8aploX&";
     public static final String PROFILE_NAME_SQL_PAGE = "StarklAwersa";
+    public static final String URL_HUB_GRID_SERVER = "http://26.115.101.38:4444";
 }
