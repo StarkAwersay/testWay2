@@ -28,7 +28,7 @@ public class TestCookies {
     public void beforeTest() throws IOException {
         UrlConnection.urlConnection();
         Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\node2.bat");
-        driver = new RemoteWebDriver(new URL("http://26.115.101.38:4444"), getCapabilities("chrome"));
+        driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("chrome"));
         driver.manage().window().maximize();
         sqlMainPage = new SqlMainPage(driver);
     }

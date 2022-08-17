@@ -27,6 +27,7 @@ import pages.SeleniumTutorialPage;
 import pages.AuthorizationPracticeSite2Page;
 import pages.CareersPage;
 import pages.YandexMainPage;
+import properties.Properties;
 
 
 import java.io.IOException;
@@ -53,7 +54,7 @@ public class TestMain {
         Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\hub.bat").waitFor();
         UrlConnection.urlConnection();
         Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\node1.bat");
-        driver = new RemoteWebDriver(new URL("http://26.115.101.38:4444"), getCapabilities("chrome"));
+        driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("chrome"));
         driver.manage().window().maximize();
         mainPage = new MainPage(driver);
         authorizationPage = new AuthorizationPage(driver);
