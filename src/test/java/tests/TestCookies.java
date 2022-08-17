@@ -7,6 +7,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.Story;
 import io.qameta.allure.Feature;
 import io.qameta.allure.SeverityLevel;
+import runTestAgain.RunTestAgain;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -19,11 +20,9 @@ import java.io.IOException;
 import java.net.URL;
 
 import static capabilites.Capabilities.getCapabilities;
-
 public class TestCookies {
     private SqlMainPage sqlMainPage;
     public static RemoteWebDriver driver;
-
     @BeforeMethod
     public void beforeTest() throws IOException {
         UrlConnection.urlConnection();
@@ -37,7 +36,7 @@ public class TestCookies {
     @Epic(value = "Тесты сайта 'Упражнения по sql'")
     @Feature(value = "Тест на авторизацию")
     @Story(value = "Авторизация с помощью cookies")
-    @Test
+    @Test(retryAnalyzer = RunTestAgain.class)
     public void testCookie() throws IOException {
         driver.get(Properties.SQL_PAGE_URL);
         String sessionId = CookiesHelper.returnSessionId();
