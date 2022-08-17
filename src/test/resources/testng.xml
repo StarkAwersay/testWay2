@@ -1,0 +1,12 @@
+<suite name="Test-Suite" parallel="tests">
+    <test name="TestMainTest">
+        <classes>
+            <class name="tests.TestMain"/>
+        </classes>
+    </test>
+    <test name="TestCookies">
+        <classes>
+            <class name="tests.TestCookies"/>
+        </classes>
+    </test>
+</suite>
