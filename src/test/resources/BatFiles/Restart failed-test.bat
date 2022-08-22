@@ -1,1 +1,1 @@
-java -cp ".: C:\Users\Илья Шпалочкин\YandexDisk\github.com\StarkAwersay\Nado\testWay2\test-output" org.testng.TestNG testng-failed.xml
+mvn clean test -Dsurefire.suiteXmlFiles = test-output\testng-failed.xml

@@ -28,8 +28,8 @@ public class TestCookies {
     @BeforeMethod
     public void beforeTest() throws IOException {
         UrlConnection.urlConnection();
-        /*Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\hub.bat");
-        Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\node2.bat");*/
+        Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\hub.bat");
+        Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\node2.bat");
         driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("chrome"));
         driver.manage().window().maximize();
         sqlMainPage = new SqlMainPage(driver);
