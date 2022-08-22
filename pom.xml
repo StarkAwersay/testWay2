@@ -76,7 +76,11 @@
                             <value>${project.build.directory}/allure-results</value>
                         </property>
                     </systemProperties>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng-failed.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
+
             </plugin>
             <plugin>
                 <groupId>io.qameta.allure</groupId>

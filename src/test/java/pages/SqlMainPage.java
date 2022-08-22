@@ -11,7 +11,7 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class SqlMainPage {
     private WebDriver driver;
-    @FindBy(css = "td>[name='login']")
+    @FindBy(css = "td>[name='loginn']")
     private WebElement logIn;
 
     @FindBy(css = "td>[name='psw']")
