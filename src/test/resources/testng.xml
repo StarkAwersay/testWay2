@@ -3,10 +3,18 @@
         <classes>
             <class name="tests.TestMain"/>
         </classes>
+        <configuration>
+            <parallel>methods</parallel>
+            <threadCount>2</threadCount>
+        </configuration>
     </test>
     <test name="TestCookies">
         <classes>
             <class name="tests.TestCookies"/>
         </classes>
+        <configuration>
+            <parallel>methods</parallel>
+            <threadCount>2</threadCount>
+        </configuration>
     </test>
 </suite>

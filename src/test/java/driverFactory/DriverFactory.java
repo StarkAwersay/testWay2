@@ -19,27 +19,36 @@ public class DriverFactory {
 
     public static WebDriver getWebDriver(String browser) throws MalformedURLException {
         WebDriver driver = null;
-        if (browser.equalsIgnoreCase("Chrome")) {
-            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\drivers\\chromedriver.exe");
-            driver = new ChromeDriver();
-        } else if (browser.equalsIgnoreCase("Edge")) {
-            WebDriverManager.edgedriver().setup();
-            driver = new EdgeDriver();
-        } else if (browser.equalsIgnoreCase("Firefox")) {
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
-        } else if (browser.equalsIgnoreCase("Internet explorer")) {
-            System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "\\src\\drivers\\IEDriverServer.exe");
-            driver = new InternetExplorerDriver();
-        } else if (browser.equalsIgnoreCase("Opera")) {
-            System.setProperty("webdriver.opera.driver", System.getProperty("user.dir") + "\\src\\drivers\\operadriver.exe");
-            driver = new OperaDriver();
-        } else if (browser.equalsIgnoreCase("grid chrome")) {
-            driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("chrome"));
-        } else if (browser.equalsIgnoreCase("grid internet explorer")) {
-            driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("internet explorer"));
-        } else if (browser.equalsIgnoreCase("grid firefox")) {
-            driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("firefox"));
+        switch (browser) {
+            case "chrome":
+                System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\drivers\\chromedriver.exe");
+                driver = new ChromeDriver();
+                break;
+            case "ege":
+                WebDriverManager.edgedriver().setup();
+                driver = new EdgeDriver();
+                break;
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                break;
+            case "internet explorer":
+                System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "\\src\\drivers\\IEDriverServer.exe");
+                driver = new InternetExplorerDriver();
+                break;
+            case "opera":
+                System.setProperty("webdriver.opera.driver", System.getProperty("user.dir") + "\\src\\drivers\\operadriver.exe");
+                driver = new OperaDriver();
+                break;
+            case "grid chrome":
+                driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("chrome"));
+                break;
+            case "grid firefox":
+                driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("firefox"));
+                break;
+            case "grid internet explorer":
+                driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("internet explorer"));
+                break;
         }
         return driver;
     }
