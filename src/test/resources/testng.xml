@@ -1,20 +1,12 @@
-<suite name="Test-Suite" parallel="tests">
+<suite name="Test-Suite" parallel="methods" thread-count="2">
     <test name="TestMainTest">
         <classes>
             <class name="tests.TestMain"/>
         </classes>
-        <configuration>
-            <parallel>methods</parallel>
-            <threadCount>2</threadCount>
-        </configuration>
     </test>
     <test name="TestCookies">
         <classes>
             <class name="tests.TestCookies"/>
         </classes>
-        <configuration>
-            <parallel>methods</parallel>
-            <threadCount>2</threadCount>
-        </configuration>
     </test>
 </suite>
