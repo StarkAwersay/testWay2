@@ -16,8 +16,9 @@ import java.net.URL;
 import static capabilites.Capabilities.getCapabilities;
 
 public class DriverFactory {
-
-    public static WebDriver getWebDriver(String browser) throws MalformedURLException {
+    public enum Browsers {chrome, edge, firefox, ie, opera, gridChrome, gridFirefox, gridIe;}
+    public static WebDriver getWebDriver(String getBrowser) throws MalformedURLException {
+        String browser = getBrowser;
         WebDriver driver = null;
         switch (browser) {
             case "chrome":
@@ -32,7 +33,7 @@ public class DriverFactory {
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
-            case "internet explorer":
+            case "ie":
                 System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "\\src\\drivers\\IEDriverServer.exe");
                 driver = new InternetExplorerDriver();
                 break;
@@ -40,13 +41,13 @@ public class DriverFactory {
                 System.setProperty("webdriver.opera.driver", System.getProperty("user.dir") + "\\src\\drivers\\operadriver.exe");
                 driver = new OperaDriver();
                 break;
-            case "grid chrome":
+            case "gridChrome":
                 driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("chrome"));
                 break;
-            case "grid firefox":
+            case "gridFirefox":
                 driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("firefox"));
                 break;
-            case "grid internet explorer":
+            case "gridIe":
                 driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("internet explorer"));
                 break;
         }
