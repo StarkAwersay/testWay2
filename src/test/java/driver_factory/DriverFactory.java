@@ -1,4 +1,4 @@
-package driverFactory;
+package driver_factory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -16,38 +16,38 @@ import java.net.URL;
 import static capabilites.Capabilities.getCapabilities;
 
 public class DriverFactory {
-    public enum Browsers {chrome, edge, firefox, ie, opera, gridChrome, gridFirefox, gridIe;}
-    public static WebDriver getWebDriver(String getBrowser) throws MalformedURLException {
+
+    public static WebDriver webDriver(String getBrowser) throws MalformedURLException {
         String browser = getBrowser;
         WebDriver driver = null;
         switch (browser) {
-            case "chrome":
+            case "CHROME":
                 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\drivers\\chromedriver.exe");
                 driver = new ChromeDriver();
                 break;
-            case "ege":
+            case "EDGE":
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
                 break;
-            case "firefox":
+            case "FIREFOX":
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
-            case "ie":
+            case "IE":
                 System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "\\src\\drivers\\IEDriverServer.exe");
                 driver = new InternetExplorerDriver();
                 break;
-            case "opera":
+            case "OPERA":
                 System.setProperty("webdriver.opera.driver", System.getProperty("user.dir") + "\\src\\drivers\\operadriver.exe");
                 driver = new OperaDriver();
                 break;
-            case "gridChrome":
+            case "GRID_CHROME":
                 driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("chrome"));
                 break;
-            case "gridFirefox":
+            case "GRID_FIREFOX":
                 driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("firefox"));
                 break;
-            case "gridIe":
+            case "GRID_IE":
                 driver = new RemoteWebDriver(new URL(Properties.URL_HUB_GRID_SERVER), getCapabilities("internet explorer"));
                 break;
         }

@@ -1,4 +1,4 @@
-package runTestAgain;
+package run_test_again;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;

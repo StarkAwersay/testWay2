@@ -1,4 +1,4 @@
-package chromeDriver;
+package chrome_driver;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 
