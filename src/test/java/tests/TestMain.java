@@ -28,7 +28,6 @@ import pages.CareersPage;
 import pages.YandexMainPage;
 
 
-import java.io.IOException;
 
 import static constants.Constants.*;
 
@@ -45,8 +44,8 @@ public class TestMain {
     private YandexMainPage yandexMainPage;
 
     @BeforeMethod
-    public void BeforeTest() throws IOException {
-        driver = DriverFactory.webDriver(String.valueOf(EnumBrowsers.Browsers.CHROME));
+    public void BeforeTest() {
+        driver = DriverFactory.webDriver(EnumBrowsers.Browsers.CHROME);
         driver.manage().window().maximize();
         mainPage = new MainPage(driver);
         authorizationPage = new AuthorizationPage(driver);
@@ -65,7 +64,7 @@ public class TestMain {
     @Feature("Тесты на главной странице")
     @Story("Проверка наличия элементов, а также работы блоков слайдера и свайпера")
     @Test(priority = 1)
-    public void mainPageTest() throws InterruptedException {
+    public void mainPageTest(){
         SoftAssert softAssert = new SoftAssert();
         driver.get(MAIN_PAGE);
         mainPage.contactDetailsBannerShouldBeVisible();

@@ -30,7 +30,7 @@ public class TestCookies {
         UrlConnection.urlConnection();
         Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\hub.bat");
         Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\node2.bat");
-        driver = (RemoteWebDriver) DriverFactory.webDriver(String.valueOf(EnumBrowsers.Browsers.GRID_CHROME));
+        driver = DriverFactory.remoteWebDriver(EnumBrowsers.GridBrowsers.GRID_CHROME);
         driver.manage().window().maximize();
         sqlMainPage = new SqlMainPage(driver);
     }
