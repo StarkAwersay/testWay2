@@ -40,7 +40,7 @@ public class TestMain extends BasicTestClass {
     private YandexMainPage yandexMainPage;
 
     @BeforeMethod
-    public void BeforeTest() {
+    public void beforeTest() {
         mainPage = new MainPage(driver);
         authorizationPage = new AuthorizationPage(driver);
         registrationPage = new RegistrationPage(driver);
