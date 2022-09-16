@@ -1,16 +1,14 @@
 package tests;
 
 
-import connection_help.UrlConnection;
-import cookies.CookiesHelper;
-import driver_factory.DriverFactory;
-import enums.EnumBrowsers;
+import helpers.UrlConnection;
+import helpers.CookiesHelper;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
 import io.qameta.allure.Story;
 import io.qameta.allure.Feature;
 import io.qameta.allure.SeverityLevel;
-import run_test_again.RunTestAgain;
+import helpers.RunTestAgain;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -21,7 +19,7 @@ import properties.Properties;
 
 import java.io.IOException;
 
-public class TestCookies {
+public class TestCookies extends BasicTestClass {
     private SqlMainPage sqlMainPage;
     public static RemoteWebDriver driver;
 
@@ -30,7 +28,6 @@ public class TestCookies {
         UrlConnection.urlConnection();
         Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\hub.bat");
         Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\node2.bat");
-        driver = DriverFactory.remoteWebDriver(EnumBrowsers.GridBrowsers.GRID_CHROME);
         driver.manage().window().maximize();
         sqlMainPage = new SqlMainPage(driver);
     }

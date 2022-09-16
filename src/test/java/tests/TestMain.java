@@ -1,9 +1,7 @@
 package tests;
 
 
-import driver_factory.DriverFactory;
-import enums.EnumBrowsers;
-import javascript_executors.JavaScriptExecutorsHelper;
+import helpers.JavaScriptExecutorsHelper;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
 import io.qameta.allure.Story;
@@ -28,13 +26,11 @@ import pages.CareersPage;
 import pages.YandexMainPage;
 
 
-
 import static constants.Constants.*;
 
 @Listeners(FailTestListener.class)
 @Epic("Тесты сайта Way2Automation")
-public class TestMain {
-    private WebDriver driver;
+public class TestMain extends BasicTestClass {
     private MainPage mainPage;
     private AuthorizationPage authorizationPage;
     private RegistrationPage registrationPage;
@@ -45,8 +41,6 @@ public class TestMain {
 
     @BeforeMethod
     public void BeforeTest() {
-        driver = DriverFactory.webDriver(EnumBrowsers.Browsers.CHROME);
-        driver.manage().window().maximize();
         mainPage = new MainPage(driver);
         authorizationPage = new AuthorizationPage(driver);
         registrationPage = new RegistrationPage(driver);
@@ -64,7 +58,7 @@ public class TestMain {
     @Feature("Тесты на главной странице")
     @Story("Проверка наличия элементов, а также работы блоков слайдера и свайпера")
     @Test(priority = 1)
-    public void mainPageTest(){
+    public void mainPageTest() {
         SoftAssert softAssert = new SoftAssert();
         driver.get(MAIN_PAGE);
         mainPage.contactDetailsBannerShouldBeVisible();
