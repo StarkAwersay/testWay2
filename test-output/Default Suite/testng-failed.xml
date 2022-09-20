@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="testWay2(failed)">
     <classes>
-      <class name="tests.TestCookies">
+      <class name="tests.TestCrossBr">
         <methods>
-          <include name="testCookie"/>
-          <include name="beforeTest"/>
+          <include name="BeforeTest"/>
+          <include name="registrationTest"/>
           <include name="tearDownDriver"/>
         </methods>
-      </class> <!-- tests.TestCookies -->
+      </class> <!-- tests.TestCrossBr -->
     </classes>
   </test> <!-- testWay2(failed) -->
 </suite> <!-- Failed suite [Default Suite] -->

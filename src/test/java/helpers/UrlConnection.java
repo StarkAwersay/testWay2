@@ -1,4 +1,4 @@
-package connectionHelp;
+package helpers;
 
 import properties.Properties;
 
