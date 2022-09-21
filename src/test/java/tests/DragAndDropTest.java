@@ -12,11 +12,11 @@ import org.testng.annotations.Test;
 import pages.DragAndDropPage;
 import properties.Properties;
 
-public class DrabAndDropTest extends BasicTestClass{
+public class DragAndDropTest extends BasicTestClass {
     private DragAndDropPage dragAndDropPage;
 
     @BeforeMethod
-    public void beforeTest(){
+    public void beforeTest() {
         dragAndDropPage = new DragAndDropPage(driver);
     }
 
@@ -26,10 +26,10 @@ public class DrabAndDropTest extends BasicTestClass{
     @Feature(value = "Тестирование формы DragNDrop")
     @Story(value = "Проверка работоспособности DragNDrop элементов")
     @Test
-    public void dragAndDropTest(){
+    public void dragAndDropTest() {
         driver.get(Properties.DRAG_N_DROP_PAGE);
         dragAndDropPage.switchFrame();
         dragAndDropPage.dragNDrop();
-        Assert.assertEquals(dragAndDropPage.getDroppableElementText(),"Dropped!","DragAndDrop не произошёл");
+        Assert.assertEquals(dragAndDropPage.getDroppableElementText(), "Dropped!", "DragAndDrop не произошёл");
     }
 }

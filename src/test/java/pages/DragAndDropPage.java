@@ -35,7 +35,7 @@ public class DragAndDropPage {
     @Step("Совершает DragAndDrop")
     public void dragNDrop() {
         Actions actions = new Actions(driver);
-        actions.dragAndDrop(Waiting.waitingElementsDisplay(draggableElement, driver), Waiting.waitingElementsDisplay(droppableElement, driver)).build().perform();
+        actions.dragAndDrop(Waiting.waitingElementsDisplay(draggableElement, driver),droppableElement).build().perform();
     }
 
     @Step("Получает текст droppable элемента")
