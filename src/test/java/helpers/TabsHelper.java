@@ -8,6 +8,14 @@ import java.util.ArrayList;
 
 public class TabsHelper {
 
+    @Step("Переключение на следующую вкладку")
+    public static void switchTabs(WebDriver driver) {
+        ArrayList<String> tabList = new ArrayList<String>(driver.getWindowHandles());
+        int countTabs = new ArrayList<>(driver.getWindowHandles()).size();
+        String lastTab = tabList.get(countTabs - (1));
+        driver.switchTo().window(lastTab);
+    }
+
     @Step("Получение количества открытых вкладок")
     public static int getCountTabs(WebDriver driver) {
         ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
