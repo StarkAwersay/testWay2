@@ -24,12 +24,9 @@ public class TabsTest extends BasicTestClass {
     @Test
     public void tabsTest() {
         driver.get(Properties.TABS_PAGE);
-        String handleHost = driver.getWindowHandle();
         tabsPage.switchFrame();
         tabsPage.clickOnNewTabButton();
-        TabsHelper.switchTabs(driver, handleHost);
         tabsPage.clickOnNewTabButton();
-        TabsHelper.switchTabs(driver, handleHost);
         Assert.assertEquals(TabsHelper.getCountTabs(driver), 3, "Новая вкладка не открылась");
     }
 }
