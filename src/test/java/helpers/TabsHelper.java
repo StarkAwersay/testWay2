@@ -2,14 +2,13 @@ package helpers;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WindowType;
 
 import java.util.ArrayList;
 
 public class TabsHelper {
 
     @Step("Переключение на следующую вкладку")
-    public static void switchTabs(WebDriver driver) {
+    public static void switcherWindows(WebDriver driver) {
         ArrayList<String> tabList = new ArrayList<String>(driver.getWindowHandles());
         int countTabs = new ArrayList<>(driver.getWindowHandles()).size();
         String lastTab = tabList.get(countTabs - (1));

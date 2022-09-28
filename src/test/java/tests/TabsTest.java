@@ -26,9 +26,9 @@ public class TabsTest extends BasicTestClass {
         driver.get(Properties.TABS_PAGE);
         tabsPage.switchFrame();
         tabsPage.clickOnNewTabButton();
-        TabsHelper.switchTabs(driver);
+        TabsHelper.switcherWindows(driver);
         tabsPage.clickOnNewTabButton();
-        TabsHelper.switchTabs(driver);
+        TabsHelper.switcherWindows(driver);
         Assert.assertEquals(TabsHelper.getCountTabs(driver), 3, "Новая вкладка не открылась");
     }
 }
