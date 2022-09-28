@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class TabsHelper {
 
     @Step("Переключение на следующую вкладку")
-    public static void switcherWindows(WebDriver driver) {
+    public static void switchLastTab(WebDriver driver) {
         ArrayList<String> tabList = new ArrayList<String>(driver.getWindowHandles());
         int countTabs = new ArrayList<>(driver.getWindowHandles()).size();
         String lastTab = tabList.get(countTabs - (1));
