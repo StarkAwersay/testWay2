@@ -1,6 +1,5 @@
 package pages;
 
-import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +17,7 @@ public class AlertPage {
         initElements(driver, this);
     }
 
-    @FindBy(css = ".internal_navi :nth-child(2) > a")
+    @FindBy(css = "[href*=tab-2]")
     private WebElement inputAlertButton;
 
     @FindBy(css = "#example-1-tab-2 iframe")
@@ -31,20 +30,23 @@ public class AlertPage {
     private WebElement alertMessage;
 
     @Step("Нажатие на кнопку Input Alert")
-    public void clickInputAlertButtonButton() {
+    public AlertPage clickInputAlertButton() {
         Waiting.waitingElementsDisplay(inputAlertButton, driver);
         inputAlertButton.click();
+        return this;
     }
 
     @Step("Переключение на поле с кнопкной displayAnAlertButton")
-    public void switchFrame() {
+    public AlertPage switchFrame() {
         Waiting.waitingElementsDisplay(frameWindow, driver);
         driver.switchTo().frame(frameWindow);
+        return this;
     }
 
     @Step("Нажатие на кнопку displayAnAlertButton")
-    public void clickDisplayAnAlertButton() {
+    public AlertPage clickDisplayAlertButton() {
         displayAnAlertButton.click();
+        return this;
     }
 
     @Step("Получение текста сообщение после ввода в input alert")

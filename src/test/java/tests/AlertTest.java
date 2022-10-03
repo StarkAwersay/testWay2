@@ -1,20 +1,23 @@
 package tests;
 
 import helpers.AlertHelper;
-import helpers.TabsHelper;
-import io.qameta.allure.*;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.Story;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Description;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AlertPage;
-import pages.TabsPage;
 import properties.Properties;
 
 public class AlertTest extends BasicTestClass {
     private AlertPage alertPage;
 
     @BeforeMethod
-    public void beforeTest() {
+    public void beforeMethod() {
         alertPage = new AlertPage(driver);
     }
 
@@ -26,9 +29,7 @@ public class AlertTest extends BasicTestClass {
     @Test
     public void tabsTest() {
         driver.get(Properties.ALERT_PAGE);
-        alertPage.clickInputAlertButtonButton();
-        alertPage.switchFrame();
-        alertPage.clickDisplayAnAlertButton();
+        alertPage.clickInputAlertButton().switchFrame().clickDisplayAlertButton();
         AlertHelper.fillingAlert(driver, "Ilya Ponomarev");
         Assert.assertEquals(alertPage.getAlertText(), "Hello Ilya Ponomarev! How are you today?");
     }
