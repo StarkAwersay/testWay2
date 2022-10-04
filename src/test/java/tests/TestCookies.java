@@ -24,7 +24,7 @@ public class TestCookies extends BasicTestClass {
     public static RemoteWebDriver driver;
 
     @BeforeMethod
-    public void beforeTest() throws IOException {
+    public void beforeMethod() throws IOException {
         UrlConnection.urlConnection();
         Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\hub.bat");
         Runtime.getRuntime().exec("src\\test\\resources\\BatFiles\\node2.bat");

@@ -1,7 +1,12 @@
 package tests;
 
 import helpers.TabsHelper;
-import io.qameta.allure.*;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.Story;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Description;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,7 +17,7 @@ public class TabsTest extends BasicTestClass {
     private TabsPage tabsPage;
 
     @BeforeMethod
-    public void beforeTest() {
+    public void beforeMethod() {
         tabsPage = new TabsPage(driver);
     }
 
