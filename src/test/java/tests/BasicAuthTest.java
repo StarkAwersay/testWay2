@@ -1,12 +1,11 @@
 package tests;
 
-import helpers.AlertHelper;
+import helpers.AuthorizationHelper;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BasicAuthPage;
-import pages.TabsPage;
 import properties.Properties;
 
 public class BasicAuthTest extends BasicTestClass {
@@ -24,7 +23,7 @@ public class BasicAuthTest extends BasicTestClass {
     @Story(value = "Авторизация с помощью базовой аутентификации")
     @Test
     public void basicAuthTest() {
-        driver.get(AlertHelper.authorizationAlert("httpwatch", "httpwatch", Properties.BASIC_AUTH_PAGE));
+        AuthorizationHelper.authorizationByLink(driver,"httpwatch", "httpwatch", Properties.BASIC_AUTH_PAGE);
         basicAuthPage.clickOnDisplayImage();
         Assert.assertTrue(basicAuthPage.getDisplayImageStatus(), "Авторизация не прошла");
     }
