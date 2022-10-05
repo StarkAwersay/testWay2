@@ -29,7 +29,9 @@ public class AlertTest extends BasicTestClass {
     @Test
     public void tabsTest() {
         driver.get(Properties.ALERT_PAGE);
-        alertPage.clickInputAlertButton().switchFrame().clickDisplayAlertButton();
+        alertPage.clickInputAlertButton()
+                .switchFrame()
+                .clickDisplayAlertButton();
         AlertHelper.fillingAlert(driver, "Ilya Ponomarev");
         Assert.assertEquals(alertPage.getAlertText(), "Hello Ilya Ponomarev! How are you today?");
     }
