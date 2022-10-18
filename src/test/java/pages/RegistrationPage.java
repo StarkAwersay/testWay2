@@ -17,7 +17,7 @@ public class RegistrationPage {
     private WebElement emailForm;
     @FindBy(id = "password")
     private WebElement passwordForm;
-    @FindBy(id = "allow_marketing_emails")
+    @FindBy(css = "[type*='check']")
     private WebElement agreeButton;
     @FindBy(css = "[data-testid*='signup']")
     private WebElement signUpRegistrationButton;
