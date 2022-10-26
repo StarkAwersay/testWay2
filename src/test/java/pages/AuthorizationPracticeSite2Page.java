@@ -90,7 +90,7 @@ public class AuthorizationPracticeSite2Page {
 
     @Step("Получения текста ошибки")
     public String getErrorText() {
-        String textError = errorText.getText();
+        String textError = Waiting.waitingElementsDisplay(errorText, driver).getText();
         return textError;
     }
 

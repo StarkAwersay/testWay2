@@ -11,7 +11,7 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 public class YandexMainPage {
     private WebDriver driver;
 
-    @FindBy(css = "input[aria-label='Запрос']")
+    @FindBy(css = "[action*='search']")
     private WebElement searchBar;
 
     @FindBy(css = "div[class='search2__placeholder']")

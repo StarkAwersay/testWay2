@@ -23,6 +23,9 @@ public class RegistrationPage {
     private WebElement signUpRegistrationButton;
     @FindBy(css = "a[class*='profile']")
     private WebElement profileButton;
+    @FindBy(css = "[class*='Bold']")
+    private WebElement errorAlert;
+
 
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
@@ -30,12 +33,24 @@ public class RegistrationPage {
     }
 
     @Step("Регистрация на сайте")
-    public void registration() {
+    public void registration(String FULL_NAME, String EMAIL, String PASSWORD) {
         Waiting.waitingElementsDisplay(fullNameForm, driver).sendKeys(FULL_NAME);
         emailForm.sendKeys(EMAIL);
         passwordForm.sendKeys(PASSWORD);
         agreeButton.click();
         signUpRegistrationButton.click();
         Waiting.waitingElementsDisplay(profileButton, driver);
+    }
+
+    public void failRegistration(String FULL_NAME, String EMAIL, String PASSWORD) {
+        Waiting.waitingElementsDisplay(fullNameForm, driver).sendKeys(FULL_NAME);
+        emailForm.sendKeys(EMAIL);
+        passwordForm.sendKeys(PASSWORD);
+        agreeButton.click();
+        signUpRegistrationButton.click();
+    }
+
+    public String getErrorText() {
+        return Waiting.waitingElementsDisplay(errorAlert, driver).getText();
     }
 }

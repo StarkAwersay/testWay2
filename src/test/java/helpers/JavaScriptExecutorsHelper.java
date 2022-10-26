@@ -20,8 +20,8 @@ public class JavaScriptExecutorsHelper {
     }
 
     @Step("Скролл")
-    public static void scroll(WebDriver driver) {
+    public static void scroll(WebDriver driver, int pixels) {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollBy(0,150)");
+        jse.executeScript("window.scrollBy(0," + pixels + ")");
     }
 }
