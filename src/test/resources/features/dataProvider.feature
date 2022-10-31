@@ -1,8 +1,8 @@
 # language: ru
-Функция: Тест на регистрацию на сайте PracticeSite2
+Функция: Тест на авторизацию на сайте PracticeSite2
 
   Предыстория:
-    Дано Страница с авторизацией на сайте PracticeSite2 "https://www.way2automation.com/angularjs-protractor/registeration/#/login"
+    Дано Страница с авторизацией на сайте PracticeSite2
 
   @success
   Сценарий: Успешная авторизация

@@ -27,9 +27,9 @@ public class AuthorizationPage {
     }
 
     @Step("Авторизация на странице")
-    public void logIn(String EMAIL, String PASSWORD) {
-        Waiting.waitingElementsDisplay(logInEmailForm, driver).sendKeys(EMAIL);
-        logInPasswordForm.sendKeys(PASSWORD);
+    public void logIn(String email, String password) {
+        Waiting.waitingElementsDisplay(logInEmailForm, driver).sendKeys(email);
+        logInPasswordForm.sendKeys(password);
         logInButton.click();
     }
 

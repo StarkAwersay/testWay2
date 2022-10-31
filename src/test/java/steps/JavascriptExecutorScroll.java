@@ -3,6 +3,8 @@ package steps;
 import driver_factory.DriverFactory;
 import enums.EnumBrowsers;
 import helpers.JavaScriptExecutorsHelper;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.Когда;
@@ -13,11 +15,15 @@ import org.testng.Assert;
 public class JavascriptExecutorScroll {
     private WebDriver driver;
 
-    @Дано("Главная страница яндекса {string}")
-    public void openYandexPage(String YandexUrl) {
+    @Before
+    public void openBrowser() {
         driver = DriverFactory.webDriver(EnumBrowsers.Browsers.CHROME);
-        driver.get(YandexUrl);
         driver.manage().window().maximize();
+    }
+
+    @Дано("Главная страница яндекса")
+    public void openYandexPage() {
+        driver.get("https://yandex.ru/");
     }
 
     @Когда("Пользователь скроллит страницу на {string} пикселей")
@@ -39,6 +45,10 @@ public class JavascriptExecutorScroll {
     @Тогда("Выводится ошибка о том, что страница не проскроллилась")
     public void errorMessage() {
         Assert.assertEquals(JavaScriptExecutorsHelper.getScrollInformation(driver), (0), "Страница не проскроллена");
+    }
+
+    @After
+    public void closeBrowser() {
         driver.quit();
     }
 }

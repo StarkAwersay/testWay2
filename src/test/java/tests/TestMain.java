@@ -83,7 +83,7 @@ public class TestMain extends BasicTestClass {
     @Test(priority = 2)
     public void registrationTest() {
         driver.get(REGISTRATION_PAGE);
-        registrationPage.registration(FULL_NAME,EMAIL,PASSWORD);
+        registrationPage.registration(FULL_NAME, EMAIL, PASSWORD);
         seleniumTutorialPage.profileMenuShouldBeDisplayed();
     }
 
@@ -93,7 +93,7 @@ public class TestMain extends BasicTestClass {
     @Test(priority = 3)
     public void authorizationTest() {
         driver.get(AUTHORIZATION_PAGE);
-        authorizationPage.logIn(EMAIL,PASSWORD);
+        authorizationPage.logIn(EMAIL, PASSWORD);
         seleniumTutorialPage.profileMenuShouldBeDisplayed();
     }
 
@@ -155,7 +155,7 @@ public class TestMain extends BasicTestClass {
     @Test
     public void scrollTest() {
         driver.get("https://yandex.ru/");
-        JavaScriptExecutorsHelper.scroll(driver,150);
+        JavaScriptExecutorsHelper.scroll(driver, 150);
         Assert.assertEquals(JavaScriptExecutorsHelper.getScrollInformation(driver), 0, "Страница проскроллена");
     }
 

@@ -2,7 +2,7 @@
 Функция: Тест на авторизацию на сайте Way2Automation
 
   Предыстория:
-    Дано Страница с авторизацией "https://sso.teachable.com/secure/673/identity/login/password"
+    Дано Страница с авторизацией
 
   @success
   Сценарий: Успешная авторизация

@@ -1,7 +1,10 @@
 package steps;
 
+import constants.Constants;
 import driver_factory.DriverFactory;
 import enums.EnumBrowsers;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.ru.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -14,32 +17,42 @@ public class AuthorizationOnWay2 {
     public AuthorizationPage authorizationPage;
     public SeleniumTutorialPage seleniumTutorialPage;
 
-    @Дано("Страница с авторизацией {string}")
-    public void openRegistrationPage(String AUTHORIZATION_PAGE) {
+    @Before
+    public void openBrowser() {
         driver = DriverFactory.webDriver(EnumBrowsers.Browsers.CHROME);
-        driver.get(AUTHORIZATION_PAGE);
-        authorizationPage = new AuthorizationPage(driver);
-        seleniumTutorialPage = new SeleniumTutorialPage(driver);
         driver.manage().window().maximize();
     }
 
-    @Когда("Пользователь вводит данные: email {string} и пароль {string}")
-    public void authorization(String EMAIL, String PASSWORD) {
-        authorizationPage.logIn(EMAIL,PASSWORD);
+    @Дано("Страница с авторизацией")
+    public void openRegistrationPage() {
+        driver.get(Constants.AUTHORIZATION_PAGE);
+        authorizationPage = new AuthorizationPage(driver);
+        seleniumTutorialPage = new SeleniumTutorialPage(driver);
     }
+
+    @Когда("Пользователь вводит данные: email {string} и пароль {string}")
+    public void authorization(String email, String password) {
+        authorizationPage.logIn(email, password);
+    }
+
     @Тогда("Появляется авторизованная страница")
     public void checkingProfileMenu() {
-        seleniumTutorialPage.profileMenuShouldBeDisplayed();driver.quit();
+        seleniumTutorialPage.profileMenuShouldBeDisplayed();
+        driver.quit();
     }
 
     @Если("Логин:{string} или пароль:{string} неверны")
-    public void failAuthorization(String EMAIL, String PASSWORD) {
-        authorizationPage.logIn(EMAIL,PASSWORD);
+    public void failAuthorization(String email, String password) {
+        authorizationPage.logIn(email, password);
     }
 
     @То("Высвечивается ошибка, что логин или пароль неверны")
     public void alert() {
         Assert.assertEquals(authorizationPage.getErrorText(), "Your email or password is incorrect.");
+    }
+
+    @After
+    public void closeBrowser() {
         driver.quit();
     }
 }

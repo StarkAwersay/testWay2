@@ -33,19 +33,19 @@ public class RegistrationPage {
     }
 
     @Step("Регистрация на сайте")
-    public void registration(String FULL_NAME, String EMAIL, String PASSWORD) {
-        Waiting.waitingElementsDisplay(fullNameForm, driver).sendKeys(FULL_NAME);
-        emailForm.sendKeys(EMAIL);
-        passwordForm.sendKeys(PASSWORD);
+    public void registration(String fullName, String email, String password) {
+        Waiting.waitingElementsDisplay(fullNameForm, driver).sendKeys(fullName);
+        emailForm.sendKeys(email);
+        passwordForm.sendKeys(password);
         agreeButton.click();
         signUpRegistrationButton.click();
         Waiting.waitingElementsDisplay(profileButton, driver);
     }
 
-    public void failRegistration(String FULL_NAME, String EMAIL, String PASSWORD) {
-        Waiting.waitingElementsDisplay(fullNameForm, driver).sendKeys(FULL_NAME);
-        emailForm.sendKeys(EMAIL);
-        passwordForm.sendKeys(PASSWORD);
+    public void failRegistration(String fullname, String email, String password) {
+        Waiting.waitingElementsDisplay(fullNameForm, driver).sendKeys(fullname);
+        emailForm.sendKeys(email);
+        passwordForm.sendKeys(password);
         agreeButton.click();
         signUpRegistrationButton.click();
     }

@@ -1,7 +1,10 @@
 package steps;
 
+import constants.Constants;
 import driver_factory.DriverFactory;
 import enums.EnumBrowsers;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
@@ -15,11 +18,14 @@ public class SwitchingToCareerPage {
     private MainPage mainPage;
     private CareersPage careersPage;
 
-    @Дано("Главная страница {string}")
-    public void openMainPage(String MainPage) {
+    @Before
+    public void openBrowser(){
         driver = DriverFactory.webDriver(EnumBrowsers.Browsers.CHROME);
-        driver.get(MainPage);
         driver.manage().window().maximize();
+    }
+    @Дано("Главная страница")
+    public void openMainPage() {
+        driver.get(Constants.MAIN_PAGE);
         mainPage = new MainPage(driver);
         careersPage = new CareersPage(driver);
     }
@@ -29,9 +35,13 @@ public class SwitchingToCareerPage {
         mainPage.careersButtonClick();
     }
 
-    @Тогда("Произошёл того, что был выполнен переход на струницу Career")
+    @Тогда("Произошёл того, что был выполнен переход на страницу Career")
     public void checkingCareerPage() {
         Assert.assertEquals(careersPage.getCareersText(), "CAREER");
+    }
+
+    @After
+    public void closeBrowser() {
         driver.quit();
     }
 

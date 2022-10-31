@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 
 public class CucumberRunnerTests {
     @CucumberOptions(
-            features = "src/test/resources/features/javaScriptExecutorScroll.feature",
+            features = "src/test/resources/features/switchingToCareerPage.feature",
             glue = "steps"
     )
     public static class cucumberRunnerTests extends AbstractTestNGCucumberTests {

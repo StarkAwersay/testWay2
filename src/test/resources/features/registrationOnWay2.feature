@@ -2,7 +2,7 @@
 Функция: Тест на регистрацию на сайте Way2Automation
 
   Предыстория:
-    Дано Страница с регистрацией "https://sso.teachable.com/secure/673/identity/sign_up/with_email"
+    Дано Страница с регистрацией
 
   @success
   Сценарий: Успешная регистрация
