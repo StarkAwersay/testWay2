@@ -1,10 +1,7 @@
 package steps;
 
+import hooks.Hooks;
 import constants.Constants;
-import driver_factory.DriverFactory;
-import enums.EnumBrowsers;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.ru.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -17,10 +14,8 @@ public class AuthorizationOnWay2 {
     public AuthorizationPage authorizationPage;
     public SeleniumTutorialPage seleniumTutorialPage;
 
-    @Before
-    public void openBrowser() {
-        driver = DriverFactory.webDriver(EnumBrowsers.Browsers.CHROME);
-        driver.manage().window().maximize();
+    public AuthorizationOnWay2() {
+        this.driver = Hooks.getDriver();
     }
 
     @Дано("Страница с авторизацией")
@@ -49,10 +44,5 @@ public class AuthorizationOnWay2 {
     @То("Высвечивается ошибка, что логин или пароль неверны")
     public void alert() {
         Assert.assertEquals(authorizationPage.getErrorText(), "Your email or password is incorrect.");
-    }
-
-    @After
-    public void closeBrowser() {
-        driver.quit();
     }
 }

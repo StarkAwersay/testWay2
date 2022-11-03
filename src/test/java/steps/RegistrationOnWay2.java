@@ -2,6 +2,7 @@ package steps;
 
 import driver_factory.DriverFactory;
 import enums.EnumBrowsers;
+import hooks.Hooks;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.ru.Дано;
@@ -22,10 +23,8 @@ public class RegistrationOnWay2 {
     private RegistrationPage registrationPage;
     private SeleniumTutorialPage seleniumTutorialPage;
 
-    @Before
-    public void openBrowser() {
-        driver = DriverFactory.webDriver(EnumBrowsers.Browsers.CHROME);
-        driver.manage().window().maximize();
+    public RegistrationOnWay2() {
+        this.driver = Hooks.getDriver();
     }
 
     @Дано("Страница с регистрацией")
@@ -53,10 +52,5 @@ public class RegistrationOnWay2 {
     @То("Высвечивается ошибка, что почта уже используется")
     public void alert() {
         Assert.assertEquals(registrationPage.getErrorText(), "Email is already in use.");
-    }
-
-    @After
-    public void closeBrowser() {
-        driver.quit();
     }
 }

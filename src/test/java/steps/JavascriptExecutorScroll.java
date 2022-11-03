@@ -3,6 +3,7 @@ package steps;
 import driver_factory.DriverFactory;
 import enums.EnumBrowsers;
 import helpers.JavaScriptExecutorsHelper;
+import hooks.Hooks;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.ru.Дано;
@@ -15,10 +16,8 @@ import org.testng.Assert;
 public class JavascriptExecutorScroll {
     private WebDriver driver;
 
-    @Before
-    public void openBrowser() {
-        driver = DriverFactory.webDriver(EnumBrowsers.Browsers.CHROME);
-        driver.manage().window().maximize();
+    public JavascriptExecutorScroll() {
+        this.driver = Hooks.getDriver();
     }
 
     @Дано("Главная страница яндекса")
@@ -45,10 +44,5 @@ public class JavascriptExecutorScroll {
     @Тогда("Выводится ошибка о том, что страница не проскроллилась")
     public void errorMessage() {
         Assert.assertEquals(JavaScriptExecutorsHelper.getScrollInformation(driver), (0), "Страница не проскроллена");
-    }
-
-    @After
-    public void closeBrowser() {
-        driver.quit();
     }
 }

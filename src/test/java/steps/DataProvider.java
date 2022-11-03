@@ -3,6 +3,7 @@ package steps;
 import constants.Constants;
 import driver_factory.DriverFactory;
 import enums.EnumBrowsers;
+import hooks.Hooks;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.ru.Дано;
@@ -17,10 +18,8 @@ public class DataProvider {
     private WebDriver driver;
     private AuthorizationPracticeSite2Page authorizationPracticeSite2Page;
 
-    @Before
-    public void openBrowser() {
-        driver = DriverFactory.webDriver(EnumBrowsers.Browsers.CHROME);
-        driver.manage().window().maximize();
+    public DataProvider() {
+        this.driver = Hooks.getDriver();
     }
 
     @Дано("Страница с авторизацией на сайте PracticeSite2")
@@ -77,10 +76,5 @@ public class DataProvider {
     public void checkDisableLoginButton() {
         authorizationPracticeSite2Page.descriptionTextClick();
         Assert.assertTrue(Color.fromString("#A94442").equals(Color.fromString(authorizationPracticeSite2Page.getDescriptionTextColor())));
-    }
-
-    @After
-    public void closeBrowser() {
-        driver.quit();
     }
 }
