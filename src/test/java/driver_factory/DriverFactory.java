@@ -21,7 +21,7 @@ public class DriverFactory {
         WebDriver driver = null;
         switch (browser) {
             case CHROME:
-                System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\drivers\\chromedriver.exe");
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
             case EDGE:
