@@ -2,7 +2,11 @@ package steps;
 
 import hooks.Hooks;
 import constants.Constants;
-import io.cucumber.java.ru.*;
+import io.cucumber.java.ru.Дано;
+import io.cucumber.java.ru.Когда;
+import io.cucumber.java.ru.Тогда;
+import io.cucumber.java.ru.Если;
+import io.cucumber.java.ru.То;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.AuthorizationPage;

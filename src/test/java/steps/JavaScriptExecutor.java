@@ -1,12 +1,12 @@
 package steps;
 
-import driver_factory.DriverFactory;
-import enums.EnumBrowsers;
 import helpers.JavaScriptExecutorsHelper;
 import hooks.Hooks;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.ru.*;
+import io.cucumber.java.ru.Дано;
+import io.cucumber.java.ru.Когда;
+import io.cucumber.java.ru.Тогда;
+import io.cucumber.java.ru.Если;
+import io.cucumber.java.ru.То;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.YandexMainPage;

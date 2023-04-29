@@ -4,6 +4,7 @@ import enums.EnumBrowsers;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -22,7 +23,9 @@ public class DriverFactory {
         switch (browser) {
             case CHROME:
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--remote-allow-origins=*");
+                driver = new ChromeDriver(options);
                 break;
             case EDGE:
                 WebDriverManager.edgedriver().setup();
@@ -35,10 +38,6 @@ public class DriverFactory {
             case IE:
                 System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "\\src\\drivers\\IEDriverServer.exe");
                 driver = new InternetExplorerDriver();
-                break;
-            case OPERA:
-                System.setProperty("webdriver.opera.driver", System.getProperty("user.dir") + "\\src\\drivers\\operadriver.exe");
-                driver = new OperaDriver();
                 break;
         }
         return driver;

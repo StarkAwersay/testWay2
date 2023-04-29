@@ -1,11 +1,7 @@
 package steps;
 
 import constants.Constants;
-import driver_factory.DriverFactory;
-import enums.EnumBrowsers;
 import hooks.Hooks;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
