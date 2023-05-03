@@ -24,9 +24,9 @@ public class RegistrationOnWay2 {
     }
 
 
-    @Дано("Страница для регистрации {string}")
-    public void openRegistrationPage(String page) {
-        driver.get(page);
+    @Дано("Страница для Регистрации")
+    public void openRegistrationPage() {
+        driver.get(REGISTRATION_PAGE);
         registrationPage = new RegistrationPage(driver);
         seleniumTutorialPage = new SeleniumTutorialPage(driver);
     }
