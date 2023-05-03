@@ -18,9 +18,9 @@ public class DataProvider {
         this.driver = Hooks.getDriver();
     }
 
-    @Дано("Страница с авторизацией на сайте PracticeSite2")
-    public void openAuthorizationPage() {
-        driver.get(Constants.PRACTICE_SITE_2_AUTHORIZATION_PAGE);
+    @Дано("Страница для авторизации {string}")
+    public void openAuthorizationPage(String page) {
+        driver.get(page);
         authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
     }
 

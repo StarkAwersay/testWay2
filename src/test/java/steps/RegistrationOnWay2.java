@@ -23,9 +23,10 @@ public class RegistrationOnWay2 {
         this.driver = Hooks.getDriver();
     }
 
-    @Дано("Страница с регистрацией")
-    public void openRegistrationPage() {
-        driver.get(REGISTRATION_PAGE);
+
+    @Дано("Страница для регистрации {string}")
+    public void openRegistrationPage(String page) {
+        driver.get(page);
         registrationPage = new RegistrationPage(driver);
         seleniumTutorialPage = new SeleniumTutorialPage(driver);
     }
