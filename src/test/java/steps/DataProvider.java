@@ -12,7 +12,6 @@ import pages.AuthorizationPracticeSite2Page;
 
 public class DataProvider {
     private WebDriver driver;
-    private AuthorizationPracticeSite2Page authorizationPracticeSite2Page;
 
     public DataProvider() {
         this.driver = Hooks.getDriver();
@@ -25,7 +24,7 @@ public class DataProvider {
 
     @Когда("Пользователь вводит данные: login{string}, password{string}, description{string} и нажимает кнопку Login")
     public void authorization(String login, String password, String description) {
-        authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
+        AuthorizationPracticeSite2Page authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         authorizationPracticeSite2Page.loginInput(login);
         authorizationPracticeSite2Page.passwordInput(password);
         authorizationPracticeSite2Page.descriptionInput(description);
@@ -34,7 +33,7 @@ public class DataProvider {
 
     @Тогда("Происходит проверка того, что авторизация прошла успешно")
     public void checkingAuthorization() {
-        authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
+        AuthorizationPracticeSite2Page authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         authorizationPracticeSite2Page.textLoginShouldBeVisible();
         String textLogIn = authorizationPracticeSite2Page.getTextLogin();
         Assert.assertEquals(textLogIn, "You're logged in!!");
@@ -42,7 +41,7 @@ public class DataProvider {
 
     @Когда("Пользователь вводит данные с некорректный логином: login{string}, password{string}, description{string} и нажимает кнопку Login")
     public void incorrectLoginAuthorization(String login, String password, String description) {
-        authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
+        AuthorizationPracticeSite2Page authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         authorizationPracticeSite2Page.loginInput(login);
         authorizationPracticeSite2Page.passwordInput(password);
         authorizationPracticeSite2Page.descriptionInput(description);
@@ -51,13 +50,13 @@ public class DataProvider {
 
     @Тогда("Высвечивается ошибка, что введённые логин или пароль неверны")
     public void getErrorText() {
-        authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
+        AuthorizationPracticeSite2Page authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         Assert.assertEquals(authorizationPracticeSite2Page.getErrorText(), "Username or password is incorrect");
     }
 
     @Когда("Пользователь вводит данные с некорректным паролем: login{string}, password{string}, description{string} и нажимает кнопку Login")
     public void incorrectPasswordAuthorization(String login, String password, String description) {
-        authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
+        AuthorizationPracticeSite2Page authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         authorizationPracticeSite2Page.loginInput(login);
         authorizationPracticeSite2Page.passwordInput(password);
         authorizationPracticeSite2Page.descriptionInput(description);
@@ -66,7 +65,7 @@ public class DataProvider {
 
     @Когда("Пользователь вводит данные с некорректными данными для поля 'description': login{string}, password{string}, description{string} и нажимает кнопку Login")
     public void incorrectDescriptionAuthorization(String login, String password, String description) {
-        authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
+        AuthorizationPracticeSite2Page authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         authorizationPracticeSite2Page.loginInput(login);
         authorizationPracticeSite2Page.passwordInput(password);
         authorizationPracticeSite2Page.descriptionInput(description);
@@ -75,8 +74,8 @@ public class DataProvider {
 
     @Тогда("Кнопка Login не активна, а поле 'description' подсвечивается краснымм цветом")
     public void checkDisableLoginButton() {
+        AuthorizationPracticeSite2Page authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         authorizationPracticeSite2Page.descriptionTextClick();
-        authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         Assert.assertTrue(Color.fromString("#A94442").equals(Color.fromString(authorizationPracticeSite2Page.getDescriptionTextColor())));
     }
 }

@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 
 public class CucumberRunnerTests {
     @CucumberOptions(
-            features = "src/test/resources/features/registrationOnWay2.feature",
+            features = "src/test/resources/features/dataProvider.feature",
             glue = {"steps","hooks"}
     )
     public static class cucumberRunnerTests extends AbstractTestNGCucumberTests {
