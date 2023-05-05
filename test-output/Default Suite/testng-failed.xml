@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="testWay2(failed)">
     <classes>
-      <class name="tests.TestCrossBr">
+      <class name="runner.CucumberRunnerTests$cucumberRunnerTests">
         <methods>
-          <include name="BeforeTest"/>
-          <include name="registrationTest"/>
-          <include name="tearDownDriver"/>
+          <include name="setUpClass"/>
+          <include name="runScenario" invocation-numbers="0 1"/>
+          <include name="tearDownClass"/>
         </methods>
-      </class> <!-- tests.TestCrossBr -->
+      </class> <!-- runner.CucumberRunnerTests$cucumberRunnerTests -->
     </classes>
   </test> <!-- testWay2(failed) -->
 </suite> <!-- Failed suite [Default Suite] -->

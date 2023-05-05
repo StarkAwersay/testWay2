@@ -1,6 +1,7 @@
 package tests;
 
 
+import helpers.CookiesHelper;
 import helpers.JavaScriptExecutorsHelper;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
@@ -25,6 +26,8 @@ import pages.AuthorizationPracticeSite2Page;
 import pages.CareersPage;
 import pages.YandexMainPage;
 
+
+import java.io.IOException;
 
 import static constants.Constants.*;
 
@@ -83,7 +86,7 @@ public class TestMain extends BasicTestClass {
     @Test(priority = 2)
     public void registrationTest() {
         driver.get(REGISTRATION_PAGE);
-        registrationPage.registration();
+        registrationPage.registration(FULL_NAME, EMAIL, PASSWORD);
         seleniumTutorialPage.profileMenuShouldBeDisplayed();
     }
 
@@ -93,7 +96,7 @@ public class TestMain extends BasicTestClass {
     @Test(priority = 3)
     public void authorizationTest() {
         driver.get(AUTHORIZATION_PAGE);
-        authorizationPage.logIn();
+        authorizationPage.logIn(EMAIL, PASSWORD);
         seleniumTutorialPage.profileMenuShouldBeDisplayed();
     }
 
@@ -155,7 +158,7 @@ public class TestMain extends BasicTestClass {
     @Test
     public void scrollTest() {
         driver.get("https://yandex.ru/");
-        JavaScriptExecutorsHelper.scroll(driver);
+        JavaScriptExecutorsHelper.scroll(driver, 150);
         Assert.assertEquals(JavaScriptExecutorsHelper.getScrollInformation(driver), 0, "Страница проскроллена");
     }
 

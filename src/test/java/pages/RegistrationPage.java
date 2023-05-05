@@ -17,12 +17,15 @@ public class RegistrationPage {
     private WebElement emailForm;
     @FindBy(id = "password")
     private WebElement passwordForm;
-    @FindBy(id = "allow_marketing_emails")
+    @FindBy(css = "[type*='check']")
     private WebElement agreeButton;
     @FindBy(css = "[data-testid*='signup']")
     private WebElement signUpRegistrationButton;
     @FindBy(css = "a[class*='profile']")
     private WebElement profileButton;
+    @FindBy(css = "[class*='Bold']")
+    private WebElement errorAlert;
+
 
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
@@ -30,12 +33,24 @@ public class RegistrationPage {
     }
 
     @Step("Регистрация на сайте")
-    public void registration() {
-        Waiting.waitingElementsDisplay(fullNameForm, driver).sendKeys(FULL_NAME);
-        emailForm.sendKeys(EMAIL);
-        passwordForm.sendKeys(PASSWORD);
+    public void registration(String fullName, String email, String password) {
+        Waiting.waitingElementsDisplay(fullNameForm, driver).sendKeys(fullName);
+        emailForm.sendKeys(email);
+        passwordForm.sendKeys(password);
         agreeButton.click();
         signUpRegistrationButton.click();
         Waiting.waitingElementsDisplay(profileButton, driver);
+    }
+
+    public void failRegistration(String fullname, String email, String password) {
+        Waiting.waitingElementsDisplay(fullNameForm, driver).sendKeys(fullname);
+        emailForm.sendKeys(email);
+        passwordForm.sendKeys(password);
+        agreeButton.click();
+        signUpRegistrationButton.click();
+    }
+
+    public String getErrorText() {
+        return Waiting.waitingElementsDisplay(errorAlert, driver).getText();
     }
 }

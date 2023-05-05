@@ -18,6 +18,8 @@ public class AuthorizationPage {
     private WebElement logInPasswordForm;
     @FindBy(css = "input[name='commit']")
     private WebElement logInButton;
+    @FindBy(css = "[class*='Bold']")
+    private WebElement errorAlert;
 
     public AuthorizationPage(WebDriver driver) {
         this.driver = driver;
@@ -25,10 +27,13 @@ public class AuthorizationPage {
     }
 
     @Step("Авторизация на странице")
-    public void logIn() {
-        Waiting.waitingElementsDisplay(logInEmailForm, driver).sendKeys(EMAIL);
-        logInPasswordForm.sendKeys(PASSWORD);
+    public void logIn(String email, String password) {
+        Waiting.waitingElementsDisplay(logInEmailForm, driver).sendKeys(email);
+        logInPasswordForm.sendKeys(password);
         logInButton.click();
     }
 
+    public String getErrorText() {
+        return Waiting.waitingElementsDisplay(errorAlert, driver).getText();
+    }
 }
