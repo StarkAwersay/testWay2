@@ -2,14 +2,18 @@ package pojoClass;
 
 import lombok.Getter;
 
+
 @Getter
-public class posts {
+public class Posts {
 
     private String title;
+    private String password;
+    private String status;
 
-
-    public posts(String title) {
+    public Posts(String title, String password, String status) {
         this.title = title;
+        this.password = password;
+        this.status = status;
     }
 
 

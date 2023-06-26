@@ -1,6 +1,5 @@
 package tests.ApiTests;
 
-import org.openqa.selenium.WebDriver;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 abstract public class BasicApiTestClass {
