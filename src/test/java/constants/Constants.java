@@ -11,4 +11,8 @@ public class Constants {
     public static final String USERNAME_FOR_PRACTICE_SITE = "angular";
     public static final String PASSWORD_FOR_PRACTICE_SITE = "password";
     public static final String USERNAME_DESCRIPTION_FOR_PRACTICE_SITE = "angular";
+    public static final String BASE_URI = "http://localhost:8000";
+    public static final String API_LOGIN = "test";
+    public static final String API_PASSWORD = "qwerreverse1337";
+    public static final String END_POINT = "/index.php?rest_route=/wp/v2/posts/";
 }

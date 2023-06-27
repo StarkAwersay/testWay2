@@ -1,4 +1,4 @@
-package pojoClass;
+package pojo_Class;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
@@ -10,5 +10,4 @@ import lombok.Setter;
 public class Title {
     private String raw;
     private String rendered;
-
 }

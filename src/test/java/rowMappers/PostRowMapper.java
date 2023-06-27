@@ -10,9 +10,9 @@ public class PostRowMapper implements RowMapper<Post> {
     @Override
     public Post mapRow(ResultSet rs, int i) throws SQLException {
         Post post = new Post();
-        post.setPost_title(rs.getString("post_title"));
-        post.setPast_password(rs.getString("post_password"));
-        post.setPost_status(rs.getString("post_status"));
+        post.setPostTitle(rs.getString("post_title"));
+        post.setPastPassword(rs.getString("post_password"));
+        post.setPostStatus(rs.getString("post_status"));
         return post;
     }
 }

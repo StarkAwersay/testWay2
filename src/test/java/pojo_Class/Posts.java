@@ -1,4 +1,4 @@
-package pojoClass;
+package pojo_Class;
 
 import lombok.Getter;
 
@@ -15,6 +15,4 @@ public class Posts {
         this.password = password;
         this.status = status;
     }
-
-
 }
