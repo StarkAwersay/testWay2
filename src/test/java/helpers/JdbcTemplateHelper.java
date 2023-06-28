@@ -1,17 +1,20 @@
 package helpers;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import rowMappers.PostRowMapper;
-import tables.Post;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import javax.sql.DataSource;
 
 public class JdbcTemplateHelper {
-    public static void jdbcTemplateUpdate(DataSource dataSource, String request) {
-        new JdbcTemplate(dataSource).update(request);
+    public static javax.sql.DataSource mysqlDataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/wordpress");
+        dataSource.setUsername("wordpress");
+        dataSource.setPassword("wordpress");
+        return dataSource;
     }
 
-    public static Post jdbcTemplateGetObject(DataSource dataSource, String request) {
-        return new JdbcTemplate(dataSource).queryForObject(request, new PostRowMapper());
+    public static JdbcTemplate jdbcTemplate() {
+        return new JdbcTemplate(mysqlDataSource());
     }
 }

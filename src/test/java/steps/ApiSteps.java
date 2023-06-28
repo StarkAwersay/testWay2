@@ -7,7 +7,7 @@ import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import org.apache.hc.core5.http.HttpStatus;
-import pojo_Class.Posts;
+import pojo_сlass.Posts;
 
 import static io.restassured.http.ContentType.JSON;
 
@@ -28,8 +28,8 @@ public class ApiSteps {
                 .build();
     }
 
-    @Step("Получение id созданного поста")
-    public static Integer getIdCreatedPost() {
+    @Step("Создание поста и получение его id")
+    public static Integer createPost() {
         return RestAssured.given()
                 .spec(requestSpecification())
                 .auth()

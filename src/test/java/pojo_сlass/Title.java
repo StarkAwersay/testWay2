@@ -1,4 +1,4 @@
-package pojo_Class;
+package pojo_сlass;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package tests.UITests;
+package tests.UI;
 
 import helpers.AuthorizationHelper;
 import io.qameta.allure.*;

@@ -1,4 +1,4 @@
-package tests.UITests;
+package tests.UI;
 
 import driver_factory.DriverFactory;
 import enums.EnumBrowsers;
