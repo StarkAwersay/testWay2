@@ -10,7 +10,7 @@ import org.apache.hc.core5.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pojo_сlass.Posts;
+import pojo.Posts;
 import rowMappers.PostRowMapper;
 import steps.ApiSteps;
 import tables.Post;
@@ -23,11 +23,6 @@ public class ApiTests {
     @BeforeTest
     public void beforeApiTest() {
         JdbcTemplateHelper.jdbcTemplate().update("delete from wp_posts");
-    }
-
-    @BeforeTest
-    public Integer getIdCreatedPost() {
-        return ApiSteps.createPost();
     }
 
     @Feature("Тесты апи")
@@ -51,16 +46,17 @@ public class ApiTests {
     @Story("Тест удаление поста")
     @Test()
     public void deletePostTest() {
+        Integer postId = ApiSteps.createPost();
         Post post = JdbcTemplateHelper.jdbcTemplate().queryForObject("SELECT *\n" +
-                "from wp_posts wp where id like" + " " + getIdCreatedPost(), new PostRowMapper());
+                "from wp_posts wp where id like" + " " + postId, new PostRowMapper());
         Assert.assertEquals("publish", post.getPostStatus());
         RestAssured.given()
                 .spec(requestSpecification())
-                .delete(Constants.END_POINT + getIdCreatedPost())
+                .delete(Constants.END_POINT + postId)
                 .then()
                 .statusCode(HttpStatus.SC_OK);
         Post delete = JdbcTemplateHelper.jdbcTemplate().queryForObject("SELECT *\n" +
-                "from wp_posts wp where id like" + " " + getIdCreatedPost(), new PostRowMapper());
+                "from wp_posts wp where id like" + " " + postId, new PostRowMapper());
         Assert.assertEquals("trash", delete.getPostStatus());
     }
 
@@ -68,18 +64,20 @@ public class ApiTests {
     @Story("Тест обновление поста")
     @Test()
     public void updatePostTest() {
+        Posts updatedPost = new Posts("leaders", "tests", "publish");
+        Integer postId = ApiSteps.createPost();
         JdbcTemplateHelper.jdbcTemplate().queryForObject("SELECT *\n" +
-                "from wp_posts wp where id like" + " " + getIdCreatedPost(), new PostRowMapper());
+                "from wp_posts wp where id like" + " " + postId, new PostRowMapper());
         Integer oldId = ApiSteps.createPost();
         RestAssured.given()
                 .spec(requestSpecification())
-                .body(new Posts("leaders", "tests", "publish"))
+                .body(updatedPost)
                 .post(Constants.END_POINT + oldId)
                 .then()
                 .statusCode(HttpStatus.SC_OK);
         Post upd = JdbcTemplateHelper.jdbcTemplate().queryForObject("SELECT *\n" +
                 "from wp_posts wp where id like" + " " + oldId, new PostRowMapper());
-        Assert.assertEquals("leaders", upd.getPostTitle());
-        Assert.assertEquals("tests", upd.getPastPassword());
+        Assert.assertEquals(updatedPost.getTitle(), upd.getPostTitle());
+        Assert.assertEquals(updatedPost.getPassword(), upd.getPastPassword());
     }
 }

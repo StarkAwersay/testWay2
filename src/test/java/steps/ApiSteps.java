@@ -7,7 +7,7 @@ import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import org.apache.hc.core5.http.HttpStatus;
-import pojo_сlass.Posts;
+import pojo.Posts;
 
 import static io.restassured.http.ContentType.JSON;
 
