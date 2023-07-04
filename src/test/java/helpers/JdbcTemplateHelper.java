@@ -2,7 +2,7 @@ package helpers;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import rowMappers.PostRowMapper;
+import row_mappers.PostRowMapper;
 import tables.Post;
 
 public class JdbcTemplateHelper {

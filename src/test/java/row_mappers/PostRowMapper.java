@@ -1,4 +1,4 @@
-package rowMappers;
+package row_mappers;
 
 import org.springframework.jdbc.core.RowMapper;
 import tables.Post;

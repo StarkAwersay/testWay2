@@ -17,14 +17,9 @@ import tables.Post;
 import static steps.ApiSteps.requestSpecification;
 
 @Epic("Api Тесты сайта test (wordpress)")
-public class UpdateAndDeletePost {
+public class UpdateAndDeletePost extends BasicApiTestClass {
 
     private static Integer idCreatePost;
-
-    @BeforeMethod
-    public void beforeApiTest() {
-        JdbcTemplateHelper.jdbcTemplate().update("delete from wp_posts");
-    }
 
     @BeforeMethod
     public void getIdCreatedPost() {
@@ -40,23 +35,23 @@ public class UpdateAndDeletePost {
                 .delete(Constants.END_POINT + idCreatePost)
                 .then()
                 .statusCode(HttpStatus.SC_OK);
-        Post delete = JdbcTemplateHelper.getCreatedPostForUpdateAndDeleteTest(idCreatePost);
-        Assert.assertEquals("trash", delete.getPostStatus());
+        Post expectedPost = JdbcTemplateHelper.getCreatedPostForUpdateAndDeleteTest(idCreatePost);
+        Assert.assertEquals("trash", expectedPost.getPostStatus());
     }
 
     @Feature("Тесты апи")
     @Story("Тест обновление поста")
     @Test()
     public void updatePostTest() {
-        Posts updatedPost = new Posts("leaders", "tests", "publish");
+        Posts expectedPost = new Posts("leaders", "tests", "publish");
         RestAssured.given()
                 .spec(requestSpecification())
-                .body(updatedPost)
+                .body(expectedPost)
                 .post(Constants.END_POINT + idCreatePost)
                 .then()
                 .statusCode(HttpStatus.SC_OK);
-        Post upd = JdbcTemplateHelper.getCreatedPostForUpdateAndDeleteTest(idCreatePost);
-        Assert.assertEquals(updatedPost.getTitle(), upd.getPostTitle());
-        Assert.assertEquals(updatedPost.getPassword(), upd.getPastPassword());
+        Post actualPost = JdbcTemplateHelper.getCreatedPostForUpdateAndDeleteTest(idCreatePost);
+        Assert.assertEquals(expectedPost.getTitle(), actualPost.getPostTitle());
+        Assert.assertEquals(expectedPost.getPassword(), actualPost.getPastPassword());
     }
 }
