@@ -1,7 +1,6 @@
-package tests;
+package tests.ui;
 
 
-import helpers.CookiesHelper;
 import helpers.JavaScriptExecutorsHelper;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
@@ -26,8 +25,6 @@ import pages.AuthorizationPracticeSite2Page;
 import pages.CareersPage;
 import pages.YandexMainPage;
 
-
-import java.io.IOException;
 
 import static constants.Constants.*;
 

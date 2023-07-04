@@ -1,12 +1,12 @@
 <suite name="Test-Suite" parallel="methods" thread-count="2">
     <test name="TestMainTest">
         <classes>
-            <class name="tests.TestMain"/>
+            <class name="tests.ui.TestMain"/>
         </classes>
     </test>
     <test name="TestCookies">
         <classes>
-            <class name="tests.TestCookies"/>
+            <class name="tests.ui.TestCookies"/>
         </classes>
     </test>
 </suite>

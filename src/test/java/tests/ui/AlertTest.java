@@ -1,4 +1,4 @@
-package tests;
+package tests.ui;
 
 import helpers.AlertHelper;
 import io.qameta.allure.Epic;
