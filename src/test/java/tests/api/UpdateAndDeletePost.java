@@ -35,8 +35,8 @@ public class UpdateAndDeletePost extends BasicApiTestClass {
                 .delete(Constants.END_POINT + idCreatePost)
                 .then()
                 .statusCode(HttpStatus.SC_OK);
-        Post expectedPost = JdbcTemplateHelper.getCreatedPostForUpdateAndDeleteTest(idCreatePost);
-        Assert.assertEquals("trash", expectedPost.getPostStatus());
+        Post actualPost = JdbcTemplateHelper.getCreatedPostForUpdateAndDeleteTest(idCreatePost);
+        Assert.assertEquals("trash", actualPost.getPostStatus());
     }
 
     @Feature("Тесты апи")
