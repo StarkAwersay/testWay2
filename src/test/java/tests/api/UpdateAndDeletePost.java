@@ -7,12 +7,10 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.restassured.RestAssured;
 import org.apache.hc.core5.http.HttpStatus;
-import org.junit.jupiter.api.BeforeEach;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pojo.Posts;
-import rowMappers.PostRowMapper;
 import steps.ApiSteps;
 import tables.Post;
 
@@ -23,7 +21,7 @@ public class UpdateAndDeletePost {
 
     private static Integer idCreatePost;
 
-    @BeforeEach
+    @BeforeMethod
     public void beforeApiTest() {
         JdbcTemplateHelper.jdbcTemplate().update("delete from wp_posts");
     }
@@ -32,7 +30,6 @@ public class UpdateAndDeletePost {
     public void getIdCreatedPost() {
         idCreatePost = ApiSteps.createPost();
     }
-
 
     @Feature("Тесты апи")
     @Story("Тест удаление поста")
@@ -43,8 +40,7 @@ public class UpdateAndDeletePost {
                 .delete(Constants.END_POINT + idCreatePost)
                 .then()
                 .statusCode(HttpStatus.SC_OK);
-        Post delete = JdbcTemplateHelper.jdbcTemplate().queryForObject("SELECT *\n" +
-                "from wp_posts wp where id like" + " " + idCreatePost, new PostRowMapper());
+        Post delete = JdbcTemplateHelper.getCreatedPostForUpdateAndDeleteTest(idCreatePost);
         Assert.assertEquals("trash", delete.getPostStatus());
     }
 
@@ -53,15 +49,13 @@ public class UpdateAndDeletePost {
     @Test()
     public void updatePostTest() {
         Posts updatedPost = new Posts("leaders", "tests", "publish");
-        Integer oldId = ApiSteps.createPost();
         RestAssured.given()
                 .spec(requestSpecification())
                 .body(updatedPost)
-                .post(Constants.END_POINT + oldId)
+                .post(Constants.END_POINT + idCreatePost)
                 .then()
                 .statusCode(HttpStatus.SC_OK);
-        Post upd = JdbcTemplateHelper.jdbcTemplate().queryForObject("SELECT *\n" +
-                "from wp_posts wp where id like" + " " + oldId, new PostRowMapper());
+        Post upd = JdbcTemplateHelper.getCreatedPostForUpdateAndDeleteTest(idCreatePost);
         Assert.assertEquals(updatedPost.getTitle(), upd.getPostTitle());
         Assert.assertEquals(updatedPost.getPassword(), upd.getPastPassword());
     }

@@ -2,7 +2,8 @@ package helpers;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-
+import rowMappers.PostRowMapper;
+import tables.Post;
 
 public class JdbcTemplateHelper {
     public static javax.sql.DataSource mysqlDataSource() {
@@ -16,5 +17,15 @@ public class JdbcTemplateHelper {
 
     public static JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(mysqlDataSource());
+    }
+
+    public static Post getCreatedPostForCreateTest() {
+        return jdbcTemplate().queryForObject("SELECT *\n" +
+                "from wp_posts wp\n", new PostRowMapper());
+    }
+
+    public static Post getCreatedPostForUpdateAndDeleteTest(Integer idCreatePost) {
+        return jdbcTemplate().queryForObject("SELECT *\n" +
+                "from wp_posts wp where id like" + " " + idCreatePost, new PostRowMapper());
     }
 }

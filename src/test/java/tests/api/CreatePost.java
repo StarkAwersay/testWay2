@@ -7,8 +7,8 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.restassured.RestAssured;
 import org.apache.hc.core5.http.HttpStatus;
-import org.junit.jupiter.api.BeforeEach;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pojo.Posts;
 import rowMappers.PostRowMapper;
@@ -18,7 +18,7 @@ import static steps.ApiSteps.requestSpecification;
 
 @Epic("Api Тесты сайта test (wordpress)")
 public class CreatePost {
-    @BeforeEach
+    @BeforeMethod
     public void beforeApiTest() {
         JdbcTemplateHelper.jdbcTemplate().update("delete from wp_posts");
     }
@@ -34,8 +34,7 @@ public class CreatePost {
                 .post(Constants.END_POINT)
                 .then()
                 .statusCode(HttpStatus.SC_CREATED);
-        Post post = JdbcTemplateHelper.jdbcTemplate().queryForObject("SELECT *\n" +
-                "from wp_posts wp\n", new PostRowMapper());
+        Post post = JdbcTemplateHelper.getCreatedPostForCreateTest();
         Assert.assertEquals(parametersPost.getTitle(), post.getPostTitle());
         Assert.assertEquals(parametersPost.getPassword(), post.getPastPassword());
         Assert.assertEquals(parametersPost.getStatus(), post.getPostStatus());
