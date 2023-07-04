@@ -28,9 +28,9 @@ public class CreatePost extends BasicApiTestClass {
                 .post(Constants.END_POINT)
                 .then()
                 .statusCode(HttpStatus.SC_CREATED);
-        Post expectedPost = JdbcTemplateHelper.getCreatedPostForCreateTest();
-        Assert.assertEquals(parametersPost.getTitle(), expectedPost.getPostTitle());
-        Assert.assertEquals(parametersPost.getPassword(), expectedPost.getPastPassword());
-        Assert.assertEquals(parametersPost.getStatus(), expectedPost.getPostStatus());
+        Post actualPost = JdbcTemplateHelper.getCreatedPostForCreateTest();
+        Assert.assertEquals(parametersPost.getTitle(), actualPost.getPostTitle());
+        Assert.assertEquals(parametersPost.getPassword(), actualPost.getPastPassword());
+        Assert.assertEquals(parametersPost.getStatus(), actualPost.getPostStatus());
     }
 }
