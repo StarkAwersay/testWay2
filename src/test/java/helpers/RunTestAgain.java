@@ -7,7 +7,6 @@ public class RunTestAgain implements IRetryAnalyzer {
     private int nowCount = 0;
     private int maxCount = 0;
 
-
     @Override
     public boolean retry(ITestResult iTestResult) {
         if (nowCount < maxCount) {

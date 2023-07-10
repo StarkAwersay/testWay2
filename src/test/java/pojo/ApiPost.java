@@ -7,6 +7,7 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
-public class Title {
-    private String rendered;
+public class ApiPost {
+    private String status;
+    private Title title;
 }

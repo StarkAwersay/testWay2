@@ -23,7 +23,7 @@ public class BasicAuthTest extends BasicTestClass {
     @Story(value = "Авторизация с помощью базовой аутентификации")
     @Test
     public void basicAuthTest() {
-        AuthorizationHelper.authorizationByLink(driver,"httpwatch", "httpwatch", Properties.BASIC_AUTH_PAGE);
+        AuthorizationHelper.authorizationByLink(driver, "httpwatch", "httpwatch", Properties.BASIC_AUTH_PAGE);
         basicAuthPage.clickOnDisplayImage();
         Assert.assertTrue(basicAuthPage.getDisplayImageStatus(), "Авторизация не прошла");
     }

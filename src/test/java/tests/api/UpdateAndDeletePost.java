@@ -10,7 +10,7 @@ import org.apache.hc.core5.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pojo.Posts;
+import pojo.BdPost;
 import steps.ApiSteps;
 import tables.Post;
 
@@ -43,7 +43,7 @@ public class UpdateAndDeletePost extends BasicApiTestClass {
     @Story("Тест обновление поста")
     @Test()
     public void updatePostTest() {
-        Posts expectedPost = new Posts("leaders", "tests", "publish");
+        BdPost expectedPost = new BdPost("leaders", "tests", "publish");
         RestAssured.given()
                 .spec(requestSpecification())
                 .body(expectedPost)

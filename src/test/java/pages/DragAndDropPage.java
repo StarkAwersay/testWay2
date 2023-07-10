@@ -10,7 +10,6 @@ import waits.Waiting;
 
 import static org.openqa.selenium.support.PageFactory.initElements;
 
-
 public class DragAndDropPage {
     private WebDriver driver;
     @FindBy(id = "draggable")
@@ -35,7 +34,7 @@ public class DragAndDropPage {
     @Step("Совершает DragAndDrop")
     public void dragNDrop() {
         Actions actions = new Actions(driver);
-        actions.dragAndDrop(Waiting.waitingElementsDisplay(draggableElement, driver),droppableElement).build().perform();
+        actions.dragAndDrop(Waiting.waitingElementsDisplay(draggableElement, driver), droppableElement).build().perform();
     }
 
     @Step("Получает текст droppable элемента")

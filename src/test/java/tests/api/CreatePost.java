@@ -9,7 +9,7 @@ import io.restassured.RestAssured;
 import org.apache.hc.core5.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pojo.Posts;
+import pojo.BdPost;
 import tables.Post;
 
 import static steps.ApiSteps.requestSpecification;
@@ -21,7 +21,7 @@ public class CreatePost extends BasicApiTestClass {
     @Story("Тест добавление поста")
     @Test
     public void createPostTest() {
-        Posts parametersPost = new Posts("leader", "test", "publish");
+        BdPost parametersPost = new BdPost("leader", "test", "publish");
         RestAssured.given()
                 .spec(requestSpecification())
                 .body(parametersPost)

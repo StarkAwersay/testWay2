@@ -9,4 +9,5 @@ public class Post {
     private String postTitle;
     private String pastPassword;
     private String postStatus;
+    private Integer id;
 }

@@ -22,13 +22,13 @@ public class JavascriptExecutorScroll {
     }
 
     @Когда("Пользователь скроллит страницу на {string} пикселей")
-    public void scroll(String Pixels) {
-        JavaScriptExecutorsHelper.scroll(driver, Integer.parseInt(Pixels));
+    public void scroll(String pixels) {
+        JavaScriptExecutorsHelper.scroll(driver, Integer.parseInt(pixels));
     }
 
     @Тогда("Происходит проверка того, что страница проскролилась на {string}")
-    public void error(String Pixels) {
-        Assert.assertEquals(JavaScriptExecutorsHelper.getScrollInformation(driver), (Integer.parseInt(Pixels)), "Страница не проскроллена");
+    public void error(String pixels) {
+        Assert.assertEquals(JavaScriptExecutorsHelper.getScrollInformation(driver), (Integer.parseInt(pixels)), "Страница не проскроллена");
         driver.quit();
     }
 

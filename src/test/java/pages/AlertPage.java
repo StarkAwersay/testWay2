@@ -8,7 +8,6 @@ import waits.Waiting;
 
 import static org.openqa.selenium.support.PageFactory.initElements;
 
-
 public class AlertPage {
     private WebDriver driver;
 

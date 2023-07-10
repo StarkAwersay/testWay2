@@ -63,7 +63,7 @@ public class DataProvider {
         authorizationPracticeSite2Page.logIn();
     }
 
-    @Когда("Пользователь вводит данные с некорректными данными для поля 'description': login{string}, password{string}, description{string} и нажимает кнопку Login")
+    @Когда("Пользователь вводит данные с некорректными данными для поля 'description': login{string}, password{string}, description{string} и нажимает кнопку Loginssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")
     public void incorrectDescriptionAuthorization(String login, String password, String description) {
         AuthorizationPracticeSite2Page authorizationPracticeSite2Page = new AuthorizationPracticeSite2Page(driver);
         authorizationPracticeSite2Page.loginInput(login);

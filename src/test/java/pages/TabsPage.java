@@ -24,10 +24,8 @@ public class TabsPage {
     @FindBy(css = "#example-1-tab-1  iframe")
     private WebElement frameWindow;
 
-
     @Step("Переключение на поле для доступа к кнопке New Browser Tab")
     public void switchFrame() {
-
         Waiting.waitingElementsDisplay(frameWindow, driver);
         driver.switchTo().frame(frameWindow);
     }

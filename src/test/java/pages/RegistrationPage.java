@@ -26,7 +26,6 @@ public class RegistrationPage {
     @FindBy(css = "[class*='Bold']")
     private WebElement errorAlert;
 
-
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
         initElements(driver, this);

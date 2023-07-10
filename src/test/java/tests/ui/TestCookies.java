@@ -49,7 +49,6 @@ public class TestCookies extends BasicTestClass {
         Assert.assertEquals(sqlMainPage.getProfileName(), Properties.PROFILE_NAME_SQL_PAGE, "Что-то не так...");
     }
 
-
     @AfterMethod
     public void tearDownDriver() {
         driver.quit();

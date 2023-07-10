@@ -9,7 +9,6 @@ import waits.Waiting;
 
 import static org.openqa.selenium.support.PageFactory.initElements;
 
-
 public class MainPage {
     private WebDriver driver;
     @FindBy(className = "ast-above-header")
