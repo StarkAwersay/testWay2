@@ -11,6 +11,9 @@ import pages.CareersPage;
 import pages.MainPage;
 
 public class SwitchingToCareerPage {
+    /**
+     * драйвер.
+     */
     private WebDriver driver;
 
     public SwitchingToCareerPage() {

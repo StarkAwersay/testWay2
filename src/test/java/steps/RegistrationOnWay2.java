@@ -14,6 +14,9 @@ import pages.SeleniumTutorialPage;
 import static constants.Constants.REGISTRATION_PAGE;
 
 public class RegistrationOnWay2 {
+    /**
+     * драйвер.
+     */
     private WebDriver driver;
 
     public RegistrationOnWay2() {

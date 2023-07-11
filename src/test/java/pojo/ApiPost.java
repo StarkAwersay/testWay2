@@ -8,6 +8,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ApiPost {
+    /**
+     *status.
+     */
     private String status;
+    /**
+     *title.
+     */
     private Title title;
 }

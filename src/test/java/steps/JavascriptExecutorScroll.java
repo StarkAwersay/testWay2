@@ -10,6 +10,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class JavascriptExecutorScroll {
+    /**
+     * драйвер.
+     */
     private WebDriver driver;
 
     public JavascriptExecutorScroll() {

@@ -11,13 +11,23 @@ import waits.Waiting;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class DragAndDropPage {
+    /**
+     * драйвер.
+     */
     private WebDriver driver;
+    /**
+     * Web Element draggableElement.
+     */
     @FindBy(id = "draggable")
     private WebElement draggableElement;
-
+    /**
+     * Web Element droppableElement.
+     */
     @FindBy(id = "droppable")
     private WebElement droppableElement;
-
+    /**
+     * Web Element frame.
+     */
     @FindBy(css = "[src*='default.html']")
     private WebElement frame;
 

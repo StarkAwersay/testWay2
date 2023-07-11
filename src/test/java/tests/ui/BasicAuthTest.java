@@ -9,6 +9,9 @@ import pages.BasicAuthPage;
 import properties.Properties;
 
 public class BasicAuthTest extends BasicTestClass {
+    /**
+     * basicAuthPage.
+     */
     private BasicAuthPage basicAuthPage;
 
     @BeforeMethod

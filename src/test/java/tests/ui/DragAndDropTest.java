@@ -13,6 +13,9 @@ import pages.DragAndDropPage;
 import properties.Properties;
 
 public class DragAndDropTest extends BasicTestClass {
+    /**
+     * drag And Drop Page.
+     */
     private DragAndDropPage dragAndDropPage;
 
     @BeforeMethod

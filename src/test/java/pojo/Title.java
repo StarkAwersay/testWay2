@@ -8,5 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Title {
+    /**
+     * rendered.
+     */
     private String rendered;
 }

@@ -20,7 +20,13 @@ import properties.Properties;
 import java.io.IOException;
 
 public class TestCookies extends BasicTestClass {
+    /**
+     * tabs sqlMainPage.
+     */
     private SqlMainPage sqlMainPage;
+    /**
+     * драйвер.
+     */
     public static RemoteWebDriver driver;
 
     @BeforeMethod

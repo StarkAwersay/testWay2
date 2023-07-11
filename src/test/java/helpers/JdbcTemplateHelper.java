@@ -25,18 +25,13 @@ public class JdbcTemplateHelper {
         return new JdbcTemplate(mysqlDataSource());
     }
 
-    public static Post getCreatedPostForCreateTest() {
+    public static Post getPostByID(Integer idCreatePost) {
         return jdbcTemplate().queryForObject("SELECT *\n"
-                + "from wp_posts wp\n", new PostRowMapper());
+                + "from wp_posts wp where id =" + " " + idCreatePost, new PostRowMapper());
     }
 
-    public static Post getCreatedPostForUpdateAndDeleteTest(Integer idCreatePost) {
-        return jdbcTemplate().queryForObject("SELECT *\n"
-                + "from wp_posts wp where id like" + " " + idCreatePost, new PostRowMapper());
-    }
-
-    public static Integer getCreatedPostId() {
-        final String SQL = "insert ignore into wp_posts  (post_title, post_status) values ('test','publish')";
+    public static Integer createPost() {
+        final String SQL = "insert ignore into wp_posts  (post_title, post_status,post_password) values ('test','publish','leaders')";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate().update(connection -> {
             PreparedStatement ps = connection.prepareStatement(SQL,

@@ -10,29 +10,68 @@ import waits.Waiting;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class MainPage {
+    /**
+     * драйвер.
+     */
     private WebDriver driver;
+    /**
+     * Web element contactDetailsBanner.
+     */
     @FindBy(className = "ast-above-header")
     private WebElement contactDetailsBanner;
+    /**
+     * Web element horizontalMenu.
+     */
     @FindBy(css = "[class*='site-primary-header-wrap ast']")
     private WebElement horizontalMenu;
+    /**
+     * Web element advertisingBanner.
+     */
     @FindBy(css = "[id*='2']>[class*='widget']")
     private WebElement advertisingBanner;
+    /**
+     * Web element homeButton.
+     */
     @FindBy(css = "[id*='2757']>a>[class*='menu']")
     private WebElement homeButton;
+    /**
+     * Web element certificationPanel.
+     */
     @FindBy(className = "elementor-element-8e1bc6a")
     private WebElement certificationPanel;
+    /**
+     * Web element careersButton.
+     */
     @FindBy(css = "[id*='menu']>[href*='careers']")
     private WebElement careersButton;
+    /**
+     * Web element resourcesButton.
+     */
     @FindBy(css = "[id*='276']>[href='#']")
     private WebElement resourcesButton;
+    /**
+     * Web element closeButton.
+     */
     @FindBy(css = "[class*='close-button']")
     private WebElement closeButton;
+    /**
+     * Web element sliderButton.
+     */
     @FindBy(css = "[class*='box']>[aria-label*='Next']")
     private WebElement sliderButton;
+    /**
+     * Web element coursePanel.
+     */
     @FindBy(css = "[data-id*='50']>[class*='swiper']")
     public WebElement coursePanel;
+    /**
+     * Web element activeBlockSwiper.
+     */
     @FindBy(css = "[class*='elem']>[class*='slide-active']")
     public WebElement activeBlockSwiper;
+    /**
+     * Web element elementSlider.
+     */
     @FindBy(css = "[src*='automationlogo']")
     private WebElement elementSlider;
 

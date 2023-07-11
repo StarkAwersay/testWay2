@@ -11,16 +11,24 @@ import java.util.ArrayList;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class TabsPage {
+    /**
+     * драйвер.
+     */
     private WebDriver driver;
 
     public TabsPage(WebDriver driver) {
         this.driver = driver;
         initElements(driver, this);
     }
+    /**
+     * Web element newTabButton.
+     */
 
     @FindBy(linkText = "New Browser Tab")
     private WebElement newTabButton;
-
+    /**
+     * Web element frameWindow.
+     */
     @FindBy(css = "#example-1-tab-1  iframe")
     private WebElement frameWindow;
 

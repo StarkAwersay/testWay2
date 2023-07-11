@@ -8,7 +8,7 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.apache.hc.core5.http.HttpStatus;
 import pojo.ApiPost;
-import pojo.BdPost;
+import pojo.DbPost;
 
 import static io.restassured.RestAssured.given;
 
@@ -35,7 +35,7 @@ public class ApiSteps {
                 .auth()
                 .preemptive()
                 .basic(Constants.API_LOGIN, Constants.API_PASSWORD)
-                .body(new BdPost("leader", "test", "publish"))
+                .body(new DbPost("leader", "test", "publish"))
                 .post(Constants.END_POINT)
                 .then()
                 .statusCode(HttpStatus.SC_CREATED)
