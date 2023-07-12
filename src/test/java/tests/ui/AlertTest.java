@@ -15,7 +15,7 @@ import properties.Properties;
 
 public class AlertTest extends BasicTestClass {
     /**
-     * Инициализация класса alertPage.
+     * Страница alertPage.
      */
     private AlertPage alertPage;
 

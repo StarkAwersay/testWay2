@@ -11,26 +11,26 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class SqlMainPage {
     /**
-     * драйвер.
+     * Драйвер.
      */
     private WebDriver driver;
     /**
-     * logIn.
+     * Web element login input.
      */
     @FindBy(css = "td>[name='login']")
     private WebElement logIn;
     /**
-     * password.
+     * Web element password input.
      */
     @FindBy(css = "td>[name='psw']")
     private WebElement password;
     /**
-     * logInButton.
+     * Web element login button.
      */
     @FindBy(css = "td>[value='Вход']")
     private WebElement logInButton;
     /**
-     * profileName.
+     * Web element profile name.
      */
     @FindBy(css = "b>a[href*='personal']")
     private WebElement profileName;

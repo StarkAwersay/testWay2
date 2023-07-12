@@ -32,31 +32,31 @@ import static constants.Constants.*;
 @Epic("Тесты сайта Way2Automation")
 public class TestMain extends BasicTestClass {
     /**
-     * mainPage.
+     * Страница main.
      */
     private MainPage mainPage;
     /**
-     * authorizationPage.
+     * Страница authorization.
      */
     private AuthorizationPage authorizationPage;
     /**
-     * registrationPage.
+     * Страница registration.
      */
     private RegistrationPage registrationPage;
     /**
-     * seleniumTutorialPage.
+     * Страница seleniumTutorial.
      */
     private SeleniumTutorialPage seleniumTutorialPage;
     /**
-     * authorizationPracticeSite2Page.
+     * Страница authorizationPracticeSite2.
      */
     private AuthorizationPracticeSite2Page authorizationPracticeSite2Page;
     /**
-     * careersPage.
+     * Страница careers.
      */
     private CareersPage careersPage;
     /**
-     * yandexMainPage.
+     * Страница yandexMain.
      */
     private YandexMainPage yandexMainPage;
 

@@ -7,19 +7,19 @@ import lombok.Setter;
 @Setter
 public class Post {
     /**
-     * postTitle.
+     * Тайтл поста.
      */
     private String postTitle;
     /**
-     * pastPassword.
+     * Пароль поста.
      */
     private String pastPassword;
     /**
-     * postStatus.
+     * Статус поста.
      */
     private String postStatus;
     /**
-     * id.
+     * Id поста.
      */
     private Integer id;
 }

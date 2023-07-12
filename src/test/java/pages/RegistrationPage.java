@@ -11,41 +11,41 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class RegistrationPage {
     /**
-     * драйвер.
+     * Драйвер.
      */
     private WebDriver driver;
     /**
-     * Web element fullNameForm.
+     * Web element full name form.
      */
     @FindBy(id = "user_name")
     private WebElement fullNameForm;
     /**
-     * Web element emailForm.
+     * Web element email form.
      */
     @FindBy(id = "user_email")
     private WebElement emailForm;
     /**
-     * Web element passwordForm.
+     * Web element password form.
      */
     @FindBy(id = "password")
     private WebElement passwordForm;
     /**
-     * Web element agreeButton.
+     * Web element agree button.
      */
     @FindBy(css = "[type*='check']")
     private WebElement agreeButton;
     /**
-     * signUpRegistrationButton.
+     * Web element signup registration button.
      */
     @FindBy(css = "[data-testid*='signup']")
     private WebElement signUpRegistrationButton;
     /**
-     * Web element profileButton.
+     * Web element profile button.
      */
     @FindBy(css = "a[class*='profile']")
     private WebElement profileButton;
     /**
-     * Web element errorAlert.
+     * Web element error alert.
      */
     @FindBy(css = "[class*='Bold']")
     private WebElement errorAlert;

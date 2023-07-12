@@ -14,7 +14,7 @@ import properties.Properties;
 
 public class DragAndDropTest extends BasicTestClass {
     /**
-     * drag And Drop Page.
+     * Страница drag And drop .
      */
     private DragAndDropPage dragAndDropPage;
 

@@ -12,17 +12,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pojo.ApiPost;
 import pojo.DbPost;
-import pojo.Title;
 import steps.ApiSteps;
 import tables.Post;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static steps.ApiSteps.requestSpecification;
 
 @Epic("Api Тесты сайта test (wordpress)")
 public class UpdateDeleteGetPost extends BasicApiTestClass {
     /**
-     * idCreatePost.
+     * Id созданного поста.
      */
     private static Integer idCreatePost;
 
@@ -66,6 +64,6 @@ public class UpdateDeleteGetPost extends BasicApiTestClass {
     public void getPost() {
         ApiPost postsRoot = ApiSteps.getPostsRoot(idCreatePost);
         Assert.assertEquals(postsRoot.getStatus(), "publish");
-        assertThat(postsRoot.getTitle()).extracting(Title::getRendered).isEqualTo("test");
+        Assert.assertEquals((postsRoot.getTitle()).getRendered(), "test");
     }
 }

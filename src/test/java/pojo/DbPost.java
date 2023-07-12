@@ -5,15 +5,15 @@ import lombok.Getter;
 @Getter
 public class DbPost {
     /**
-     * title.
+     * Тайтл поста.
      */
     private String title;
     /**
-     * password.
+     * Пароль поста.
      */
     private String password;
     /**
-     * status.
+     * Статус поста.
      */
     private String status;
 

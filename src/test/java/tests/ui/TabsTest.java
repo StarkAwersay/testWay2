@@ -15,7 +15,7 @@ import properties.Properties;
 
 public class TabsTest extends BasicTestClass {
     /**
-     * tabs Page.
+     * Страница tabs.
      */
     private TabsPage tabsPage;
 

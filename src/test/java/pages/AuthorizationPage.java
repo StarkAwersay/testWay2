@@ -12,26 +12,26 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class AuthorizationPage {
     /**
-     *драйвер.
+     *Драйвер.
      */
     private WebDriver driver;
     /**
-     * Web Element logInEmailForm.
+     * Web element login email form.
      */
     @FindBy(css = "#email")
     private WebElement logInEmailForm;
     /**
-     * Web Element logInPasswordForm.
+     * Web element login password form.
      */
     @FindBy(css = "#password")
     private WebElement logInPasswordForm;
     /**
-     * Web Element logInButton.
+     * Web element login button.
      */
     @FindBy(css = "input[name='commit']")
     private WebElement logInButton;
     /**
-     * Web Element errorAlert.
+     * Web element error alert.
      */
     @FindBy(css = "[class*='Bold']")
     private WebElement errorAlert;

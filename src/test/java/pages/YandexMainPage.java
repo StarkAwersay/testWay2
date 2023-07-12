@@ -10,16 +10,16 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class YandexMainPage {
     /**
-     * драйвер.
+     * Драйвер.
      */
     private WebDriver driver;
     /**
-     * Web element searchBar.
+     * Web element searchbar.
      */
     @FindBy(css = "[action*='search']")
     private WebElement searchBar;
     /**
-     * Web element searchBarPlaceHolder.
+     * Web element searchbar placeholder.
      */
     @FindBy(css = "div[class='search2__placeholder']")
     private WebElement searchBarPlaceHolder;

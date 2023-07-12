@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 public class Hooks {
     /**
-     * драйвер.
+     * Драйвер.
      */
     private static WebDriver driver;
 

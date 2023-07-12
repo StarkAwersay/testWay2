@@ -5,11 +5,11 @@ import org.testng.ITestResult;
 
 public class RunTestAgain implements IRetryAnalyzer {
     /**
-     * nowCount.
+     * Минимальное количество рестартов.
      */
     private int nowCount = 0;
     /**
-     * maxCount.
+     * Максимальное количество рестартов.
      */
     private int maxCount = 0;
 

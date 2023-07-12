@@ -11,7 +11,7 @@ import org.testng.Assert;
 
 public class JavascriptExecutorScroll {
     /**
-     * драйвер.
+     * Драйвер.
      */
     private WebDriver driver;
 

@@ -9,11 +9,11 @@ import lombok.Setter;
 @Setter
 public class ApiPost {
     /**
-     *status.
+     * Статус поста.
      */
     private String status;
     /**
-     *title.
+     *  Тайтл поста.
      */
     private Title title;
 }

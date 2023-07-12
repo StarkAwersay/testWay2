@@ -10,7 +10,7 @@ import properties.Properties;
 
 public class BasicAuthTest extends BasicTestClass {
     /**
-     * basicAuthPage.
+     * Страница basicAuthPage.
      */
     private BasicAuthPage basicAuthPage;
 

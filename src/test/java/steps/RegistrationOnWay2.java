@@ -15,7 +15,7 @@ import static constants.Constants.REGISTRATION_PAGE;
 
 public class RegistrationOnWay2 {
     /**
-     * драйвер.
+     * Драйвер.
      */
     private WebDriver driver;
 

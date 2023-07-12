@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class Title {
     /**
-     * rendered.
+     * Тайтл поста.
      */
     private String rendered;
 }

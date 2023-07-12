@@ -12,7 +12,7 @@ import pages.MainPage;
 
 public class SwitchingToCareerPage {
     /**
-     * драйвер.
+     * Драйвер.
      */
     private WebDriver driver;
 

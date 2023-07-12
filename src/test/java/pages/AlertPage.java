@@ -10,7 +10,7 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class AlertPage {
     /**
-     *драйвер.
+     * Драйвер.
      */
     private WebDriver driver;
 
@@ -19,23 +19,23 @@ public class AlertPage {
         initElements(driver, this);
     }
     /**
-     * Web Element inputAlertButton.
+     * Web element input alert button.
      */
 
     @FindBy(css = "[href*=tab-2]")
     private WebElement inputAlertButton;
     /**
-     * Web Element frameWindow.
+     * Web element frame window.
      */
     @FindBy(css = "#example-1-tab-2 iframe")
     private WebElement frameWindow;
     /**
-     * Web Element displayAnAlertButton.
+     * Web element display an alert button.
      */
     @FindBy(xpath = "//button[contains(text(),'Click')]")
     private WebElement displayAnAlertButton;
     /**
-     * Web Element alertMessage.
+     * Web element alert message.
      */
     @FindBy(id = "demo")
     private WebElement alertMessage;

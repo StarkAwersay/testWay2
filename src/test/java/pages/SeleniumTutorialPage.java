@@ -10,11 +10,11 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class SeleniumTutorialPage {
     /**
-     * драйвер.
+     * Драйвер.
      */
     private WebDriver driver;
     /**
-     * Web element profileMenu.
+     * Web element profile menu.
      */
     @FindBy(css = "a[class*='profile']")
     private WebElement profileMenu;

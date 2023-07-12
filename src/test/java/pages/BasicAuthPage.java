@@ -10,7 +10,7 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class BasicAuthPage {
     /**
-     *драйвер.
+     * Драйвер.
      */
     private WebDriver driver;
 
@@ -19,13 +19,13 @@ public class BasicAuthPage {
         initElements(driver, this);
     }
     /**
-     * Web Element displayImageButton.
+     * Web element display image button.
      */
 
     @FindBy(id = "displayImage")
     private WebElement displayImageButton;
     /**
-     * Web Element authenticatedImage.
+     * Web element authenticated image.
      */
     @FindBy(id = "downloadImg")
     private WebElement authenticatedImage;

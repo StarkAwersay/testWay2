@@ -2,11 +2,11 @@ package enums;
 
 public class EnumBrowsers {
     /**
-     * браузеры.
+     * Браузеры.
      */
     public enum Browsers { CHROME, EDGE, FIREFOX, IE, OPERA; }
     /**
-     * браузеры для grid.
+     * Браузеры для grid.
      */
 
     public enum GridBrowsers { GRID_CHROME, GRID_FIREFOX, GRID_IE }

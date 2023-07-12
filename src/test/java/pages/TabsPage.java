@@ -12,7 +12,7 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class TabsPage {
     /**
-     * драйвер.
+     * Драйвер.
      */
     private WebDriver driver;
 
@@ -21,13 +21,13 @@ public class TabsPage {
         initElements(driver, this);
     }
     /**
-     * Web element newTabButton.
+     * Web element new tab button.
      */
 
     @FindBy(linkText = "New Browser Tab")
     private WebElement newTabButton;
     /**
-     * Web element frameWindow.
+     * Web element frame window.
      */
     @FindBy(css = "#example-1-tab-1  iframe")
     private WebElement frameWindow;

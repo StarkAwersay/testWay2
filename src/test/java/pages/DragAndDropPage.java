@@ -12,21 +12,21 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class DragAndDropPage {
     /**
-     * драйвер.
+     * Драйвер.
      */
     private WebDriver driver;
     /**
-     * Web Element draggableElement.
+     * Web element draggable element.
      */
     @FindBy(id = "draggable")
     private WebElement draggableElement;
     /**
-     * Web Element droppableElement.
+     * Web element droppable element.
      */
     @FindBy(id = "droppable")
     private WebElement droppableElement;
     /**
-     * Web Element frame.
+     * Web element frame.
      */
     @FindBy(css = "[src*='default.html']")
     private WebElement frame;

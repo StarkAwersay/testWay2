@@ -21,11 +21,11 @@ import java.io.IOException;
 
 public class TestCookies extends BasicTestClass {
     /**
-     * tabs sqlMainPage.
+     * Главная страница sql.
      */
     private SqlMainPage sqlMainPage;
     /**
-     * драйвер.
+     * Драйвер.
      */
     public static RemoteWebDriver driver;
 

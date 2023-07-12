@@ -13,7 +13,7 @@ import pages.YandexMainPage;
 
 public class JavaScriptExecutor {
     /**
-     * драйвер.
+     * Драйвер.
      */
     private WebDriver driver;
 

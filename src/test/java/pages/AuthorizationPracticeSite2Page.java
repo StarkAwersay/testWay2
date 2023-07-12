@@ -11,46 +11,46 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class AuthorizationPracticeSite2Page {
     /**
-     * драйвер.
+     * Драйвер.
      */
     private WebDriver driver;
     /**
-     * Web Element usernameField.
+     * Web element username field.
      */
     @FindBy(id = "username")
     private WebElement usernameField;
     /**
-     * Web Element passwordField.
+     * Web element password field.
      */
     @FindBy(id = "password")
     private WebElement passwordField;
     /**
-     * Web Element descriptionUsernameField.
+     * Web element description username field.
      */
     @FindBy(css = "input[id *='input_username']")
     private WebElement descriptionUsernameField;
     /**
-     * Web Element logInButton.
+     * Web element login button.
      */
     @FindBy(css = "button[class*='btn']")
     private WebElement logInButton;
     /**
-     * Web Element textLogIn.
+     * Web element text login.
      */
     @FindBy(xpath = "//div/p[contains(text(),'Yo')]")
     private WebElement textLogIn;
     /**
-     * Web Element logOutButton.
+     * Web element logout button.
      */
     @FindBy(linkText = "Logout")
     private WebElement logOutButton;
     /**
-     * Web Element errorText.
+     * Web element error text.
      */
     @FindBy(css = "[class*=alert-danger]")
     private WebElement errorText;
     /**
-     * Web Element descriptionText.
+     * Web element description text.
      */
     @FindBy(css = "[class*=control-label] ")
     private WebElement descriptionText;
