@@ -11,13 +11,28 @@ import static constants.Constants.PASSWORD;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class AuthorizationPage {
+    /**
+     *Драйвер.
+     */
     private WebDriver driver;
+    /**
+     * Web element login email form.
+     */
     @FindBy(css = "#email")
     private WebElement logInEmailForm;
+    /**
+     * Web element login password form.
+     */
     @FindBy(css = "#password")
     private WebElement logInPasswordForm;
+    /**
+     * Web element login button.
+     */
     @FindBy(css = "input[name='commit']")
     private WebElement logInButton;
+    /**
+     * Web element error alert.
+     */
     @FindBy(css = "[class*='Bold']")
     private WebElement errorAlert;
 

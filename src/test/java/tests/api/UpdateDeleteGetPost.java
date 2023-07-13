@@ -10,20 +10,23 @@ import org.apache.hc.core5.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pojo.Posts;
+import pojo.ApiPost;
+import pojo.DbPost;
 import steps.ApiSteps;
 import tables.Post;
 
 import static steps.ApiSteps.requestSpecification;
 
 @Epic("Api Тесты сайта test (wordpress)")
-public class UpdateAndDeletePost extends BasicApiTestClass {
-
+public class UpdateDeleteGetPost extends BasicApiTestClass {
+    /**
+     * Id созданного поста.
+     */
     private static Integer idCreatePost;
 
     @BeforeMethod
     public void getIdCreatedPost() {
-        idCreatePost = ApiSteps.createPost();
+        idCreatePost = JdbcTemplateHelper.createPost();
     }
 
     @Feature("Тесты апи")
@@ -35,7 +38,7 @@ public class UpdateAndDeletePost extends BasicApiTestClass {
                 .delete(Constants.END_POINT + idCreatePost)
                 .then()
                 .statusCode(HttpStatus.SC_OK);
-        Post actualPost = JdbcTemplateHelper.getCreatedPostForUpdateAndDeleteTest(idCreatePost);
+        Post actualPost = JdbcTemplateHelper.getPostByID(idCreatePost);
         Assert.assertEquals("trash", actualPost.getPostStatus());
     }
 
@@ -43,15 +46,24 @@ public class UpdateAndDeletePost extends BasicApiTestClass {
     @Story("Тест обновление поста")
     @Test()
     public void updatePostTest() {
-        Posts expectedPost = new Posts("leaders", "tests", "publish");
+        DbPost expectedPost = new DbPost("leaders", "tests", "publish");
         RestAssured.given()
                 .spec(requestSpecification())
                 .body(expectedPost)
                 .post(Constants.END_POINT + idCreatePost)
                 .then()
                 .statusCode(HttpStatus.SC_OK);
-        Post actualPost = JdbcTemplateHelper.getCreatedPostForUpdateAndDeleteTest(idCreatePost);
+        Post actualPost = JdbcTemplateHelper.getPostByID(idCreatePost);
         Assert.assertEquals(expectedPost.getTitle(), actualPost.getPostTitle());
         Assert.assertEquals(expectedPost.getPassword(), actualPost.getPastPassword());
+    }
+
+    @Feature("Тесты апи")
+    @Story("Тест метода get")
+    @Test
+    public void getPost() {
+        ApiPost postsRoot = ApiSteps.getPostsRoot(idCreatePost);
+        Assert.assertEquals(postsRoot.getStatus(), "publish");
+        Assert.assertEquals((postsRoot.getTitle()).getRendered(), "test");
     }
 }

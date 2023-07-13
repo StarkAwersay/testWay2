@@ -14,6 +14,9 @@ import pages.TabsPage;
 import properties.Properties;
 
 public class TabsTest extends BasicTestClass {
+    /**
+     * Страница tabs.
+     */
     private TabsPage tabsPage;
 
     @BeforeMethod

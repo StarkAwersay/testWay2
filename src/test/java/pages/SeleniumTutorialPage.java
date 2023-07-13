@@ -9,7 +9,13 @@ import waits.Waiting;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class SeleniumTutorialPage {
+    /**
+     * Драйвер.
+     */
     private WebDriver driver;
+    /**
+     * Web element profile menu.
+     */
     @FindBy(css = "a[class*='profile']")
     private WebElement profileMenu;
 

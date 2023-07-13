@@ -10,16 +10,28 @@ import waits.Waiting;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class SqlMainPage {
+    /**
+     * Драйвер.
+     */
     private WebDriver driver;
+    /**
+     * Web element login input.
+     */
     @FindBy(css = "td>[name='login']")
     private WebElement logIn;
-
+    /**
+     * Web element password input.
+     */
     @FindBy(css = "td>[name='psw']")
     private WebElement password;
-
+    /**
+     * Web element login button.
+     */
     @FindBy(css = "td>[value='Вход']")
     private WebElement logInButton;
-
+    /**
+     * Web element profile name.
+     */
     @FindBy(css = "b>a[href*='personal']")
     private WebElement profileName;
 

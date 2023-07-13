@@ -8,7 +8,13 @@ import org.openqa.selenium.support.FindBy;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class CareersPage {
+    /**
+     * Драйвер.
+     */
     private WebDriver driver;
+    /**
+     * Web element careers text.
+     */
     @FindBy(xpath = "//h1[contains(text(),'CAREER')]")
     private WebElement careersText;
 

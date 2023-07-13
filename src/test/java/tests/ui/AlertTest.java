@@ -14,6 +14,9 @@ import pages.AlertPage;
 import properties.Properties;
 
 public class AlertTest extends BasicTestClass {
+    /**
+     * Страница alertPage.
+     */
     private AlertPage alertPage;
 
     @BeforeMethod

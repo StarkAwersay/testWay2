@@ -7,6 +7,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 
 abstract public class BasicTestClass {
+    /**
+     * Драйвер.
+     */
     protected WebDriver driver;
 
     @BeforeMethod

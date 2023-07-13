@@ -9,7 +9,7 @@ import io.restassured.RestAssured;
 import org.apache.hc.core5.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pojo.Posts;
+import pojo.DbPost;
 import tables.Post;
 
 import static steps.ApiSteps.requestSpecification;
@@ -21,14 +21,18 @@ public class CreatePost extends BasicApiTestClass {
     @Story("Тест добавление поста")
     @Test
     public void createPostTest() {
-        Posts parametersPost = new Posts("leader", "test", "publish");
-        RestAssured.given()
+        DbPost parametersPost = new DbPost("leader", "test", "publish");
+        Integer id = RestAssured.given()
                 .spec(requestSpecification())
                 .body(parametersPost)
                 .post(Constants.END_POINT)
                 .then()
-                .statusCode(HttpStatus.SC_CREATED);
-        Post actualPost = JdbcTemplateHelper.getCreatedPostForCreateTest();
+                .statusCode(HttpStatus.SC_CREATED)
+                .extract()
+                .response()
+                .body()
+                .path("id");
+        Post actualPost = JdbcTemplateHelper.getPostByID(id);
         Assert.assertEquals(parametersPost.getTitle(), actualPost.getPostTitle());
         Assert.assertEquals(parametersPost.getPassword(), actualPost.getPastPassword());
         Assert.assertEquals(parametersPost.getStatus(), actualPost.getPostStatus());

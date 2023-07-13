@@ -12,6 +12,9 @@ import org.testng.Assert;
 import pages.YandexMainPage;
 
 public class JavaScriptExecutor {
+    /**
+     * Драйвер.
+     */
     private WebDriver driver;
 
     public JavaScriptExecutor() {

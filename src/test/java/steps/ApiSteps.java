@@ -2,14 +2,15 @@ package steps;
 
 import constants.Constants;
 import io.qameta.allure.Step;
-import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.apache.hc.core5.http.HttpStatus;
-import pojo.Posts;
+import pojo.ApiPost;
+import pojo.DbPost;
 
-import static io.restassured.http.ContentType.JSON;
+import static io.restassured.RestAssured.given;
 
 public class ApiSteps {
     private static PreemptiveBasicAuthScheme setPreemptiveBasicAuthScheme() {
@@ -22,20 +23,19 @@ public class ApiSteps {
     public static RequestSpecification requestSpecification() {
         return new RequestSpecBuilder()
                 .setBaseUri(Constants.BASE_URI)
-                .setContentType(JSON)
-                .setAccept(JSON)
+                .setContentType(ContentType.JSON)
                 .setAuth(setPreemptiveBasicAuthScheme())
                 .build();
     }
 
     @Step("Создание поста и получение его id")
     public static Integer createPost() {
-        return RestAssured.given()
+        return given()
                 .spec(requestSpecification())
                 .auth()
                 .preemptive()
                 .basic(Constants.API_LOGIN, Constants.API_PASSWORD)
-                .body(new Posts("leader", "test", "publish"))
+                .body(new DbPost("leader", "test", "publish"))
                 .post(Constants.END_POINT)
                 .then()
                 .statusCode(HttpStatus.SC_CREATED)
@@ -43,5 +43,14 @@ public class ApiSteps {
                 .response()
                 .body()
                 .path("id");
+    }
+
+    @Step("Отправка Get запроса для получения root")
+    public static ApiPost getPostsRoot(Integer id) {
+        return given().spec(requestSpecification())
+                .when().get(Constants.END_POINT + id)
+                .then()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().body().as(ApiPost.class);
     }
 }

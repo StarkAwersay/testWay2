@@ -8,17 +8,25 @@ import waits.Waiting;
 
 import static org.openqa.selenium.support.PageFactory.initElements;
 
-
 public class BasicAuthPage {
+    /**
+     * Драйвер.
+     */
     private WebDriver driver;
 
     public BasicAuthPage(WebDriver driver) {
         this.driver = driver;
         initElements(driver, this);
     }
+    /**
+     * Web element display image button.
+     */
 
     @FindBy(id = "displayImage")
     private WebElement displayImageButton;
+    /**
+     * Web element authenticated image.
+     */
     @FindBy(id = "downloadImg")
     private WebElement authenticatedImage;
 

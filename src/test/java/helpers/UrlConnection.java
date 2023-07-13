@@ -20,7 +20,6 @@ public class UrlConnection {
             connection.setConnectTimeout(5000);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
-        } catch (IOException e) {
         }
     }
 }

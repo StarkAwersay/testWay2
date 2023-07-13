@@ -7,9 +7,13 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
-public class Title {
+public class ApiPost {
     /**
-     * Тайтл поста.
+     * Статус поста.
      */
-    private String rendered;
+    private String status;
+    /**
+     *  Тайтл поста.
+     */
+    private Title title;
 }

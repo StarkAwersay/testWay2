@@ -11,6 +11,9 @@ import org.testng.Assert;
 import pages.AuthorizationPracticeSite2Page;
 
 public class DataProvider {
+    /**
+     * Драйвер.
+     */
     private WebDriver driver;
 
     public DataProvider() {

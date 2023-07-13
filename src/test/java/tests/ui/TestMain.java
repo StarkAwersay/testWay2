@@ -31,12 +31,33 @@ import static constants.Constants.*;
 @Listeners(FailTestListener.class)
 @Epic("Тесты сайта Way2Automation")
 public class TestMain extends BasicTestClass {
+    /**
+     * Страница main.
+     */
     private MainPage mainPage;
+    /**
+     * Страница authorization.
+     */
     private AuthorizationPage authorizationPage;
+    /**
+     * Страница registration.
+     */
     private RegistrationPage registrationPage;
+    /**
+     * Страница seleniumTutorial.
+     */
     private SeleniumTutorialPage seleniumTutorialPage;
+    /**
+     * Страница authorizationPracticeSite2.
+     */
     private AuthorizationPracticeSite2Page authorizationPracticeSite2Page;
+    /**
+     * Страница careers.
+     */
     private CareersPage careersPage;
+    /**
+     * Страница yandexMain.
+     */
     private YandexMainPage yandexMainPage;
 
     @BeforeMethod

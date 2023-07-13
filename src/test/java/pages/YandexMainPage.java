@@ -9,11 +9,18 @@ import org.openqa.selenium.support.FindBy;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class YandexMainPage {
+    /**
+     * Драйвер.
+     */
     private WebDriver driver;
-
+    /**
+     * Web element searchbar.
+     */
     @FindBy(css = "[action*='search']")
     private WebElement searchBar;
-
+    /**
+     * Web element searchbar placeholder.
+     */
     @FindBy(css = "div[class='search2__placeholder']")
     private WebElement searchBarPlaceHolder;
 

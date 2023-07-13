@@ -8,24 +8,35 @@ import waits.Waiting;
 
 import static org.openqa.selenium.support.PageFactory.initElements;
 
-
 public class AlertPage {
+    /**
+     * Драйвер.
+     */
     private WebDriver driver;
 
     public AlertPage(WebDriver driver) {
         this.driver = driver;
         initElements(driver, this);
     }
+    /**
+     * Web element input alert button.
+     */
 
     @FindBy(css = "[href*=tab-2]")
     private WebElement inputAlertButton;
-
+    /**
+     * Web element frame window.
+     */
     @FindBy(css = "#example-1-tab-2 iframe")
     private WebElement frameWindow;
-
+    /**
+     * Web element display an alert button.
+     */
     @FindBy(xpath = "//button[contains(text(),'Click')]")
     private WebElement displayAnAlertButton;
-
+    /**
+     * Web element alert message.
+     */
     @FindBy(id = "demo")
     private WebElement alertMessage;
 
